@@ -1,0 +1,321 @@
+{
+    "personal": {
+        "name": "Shalmoly",
+        "title": "Data Engineer",
+        "bio": "I'm Shalmoly, a Data Engineer building scalable data pipelines and analytics platforms.",
+        "email": "shal.m@outlook.com",
+        "location": "Melbourne, Victoria, Australia",
+        "social": {
+            "github": "https://github.com/ShalmolyMondal",
+            "linkedin": "https://www.linkedin.com/in/shalmoly-mondal/",
+            "googleScholar": "https://scholar.google.com.au/citations?user=qE84Td8AAAAJ&hl=en&authuser=1",
+            "twitter": "https://twitter.com/shalmoly",
+            "medium": "https://medium.com/@shalmoly"
+        }
+    },
+    "about": {
+        "intro": "I'm Shalmoly, a Data Engineer building scalable data pipelines and analytics platforms.",
+        "description": "I'm currently working on building robust data infrastructure and real-time analytics systems. I have a passion for transforming raw data into actionable insights and building systems that scale. Always had a thing for open-source, I contribute to various data engineering projects.",
+        "currentlyWorkingOn": [
+            {
+                "title": "Real-time Analytics Platform",
+                "description": "Building a scalable real-time data processing system using Apache Kafka and Spark"
+            },
+            {
+                "title": "Data Pipeline Orchestration",
+                "description": "Designing and implementing ETL pipelines with Airflow and dbt"
+            }
+        ],
+        "experience": [
+            {
+                "role": "Developer, Data Engineer",
+                "company": "Federation University Australia",
+                "period": "Jul 2024 - Present",
+                "type": "Full-time",
+                "location": "Melbourne, Victoria, Australia",
+                "description": "Building scalable data pipelines and analytics platforms using Python and Microsoft SQL Server."
+            },
+            {
+                "role": "Sessional Academic",
+                "company": "Swinburne University of Technology",
+                "period": "Mar 2020 - Present",
+                "type": "Part-time",
+                "location": "Hawthorn, Victoria, Australia",
+                "description": "Delivering lectures and tutorials for undergraduate and postgraduate courses in IoT, data visualization, programming, big data, and computer systems. Supervising postgraduate research projects in IoT, data science, and big data, providing guidance and mentorship to students throughout the research process."
+            },
+            {
+                "role": "IoT RND Data Analyst",
+                "company": "Blueiot Technology Co., Ltd",
+                "period": "Aug 2023 - Jun 2024",
+                "type": "Part-time",
+                "location": "Melbourne, Victoria, Australia",
+                "description": "Conducted in-depth analysis of IoT sensor data to optimize air quality monitoring systems. Designed and developed wire frame prototypes for monitoring building sensor systems. Created interactive dashboards to visualize air quality trends and patterns."
+            },
+            {
+                "role": "Research Assistant",
+                "company": "Swinburne University of Technology",
+                "period": "Oct 2022 - Jun 2023",
+                "type": "Contract",
+                "location": "Melbourne, Victoria, Australia",
+                "description": "Developed AI-driven solutions for real-time detection of bicycle lanes using computer vision techniques to improve road safety for cyclists, particularly in low-visibility nighttime conditions."
+            },
+            {
+                "role": "IoT Researcher",
+                "company": "Swinburne University of Technology",
+                "period": "Jul 2019 - Jun 2023",
+                "type": "Full-time",
+                "location": "Hawthorn, Victoria, Australia",
+                "description": "Conceptualized and implemented a framework for efficient and scalable data generation tailored to IoT applications. Developed research prototypes and Proof-of-Concept models to validate hypotheses and derive data-driven insights. Analyzed large-scale IoT data to identify trends, uncover patterns and improve forecasting accuracy. Published research findings in peer-reviewed journals and presented at international conferences. Mentored research projects, ensuring successful execution and impactful outcomes."
+            },
+            {
+                "role": "Software Developer",
+                "company": "Infosys",
+                "period": "Mar 2017 - Apr 2019",
+                "type": "Full-time",
+                "location": "Greater Hyderabad Area",
+                "description": "Led SQL development initiatives for Oracle APPS, focusing on ERP system optimization and enhancement. Spearheaded the creation of technical and functional documentation to streamline project requirements and ensure alignment with business objectives. Drove cross-functional collaboration with stakeholders, delivering high-quality solutions while ensuring adherence to timelines and project goals."
+            },
+            {
+                "role": "Research Scholar",
+                "company": "IIT (ISM) Dhanbad",
+                "period": "Jun 2015 - Apr 2016",
+                "type": "Full-time",
+                "location": "Dhanbad, Jharkhand, India",
+                "description": "Implemented a face recognition system, utilizing eigenface and distance classifier, and achieved an accuracy of 93.33%. Authored and published work in peer-reviewed journals and international conferences showcasing the research findings and contributions in the field."
+            }
+        ],
+        "education": [
+            {
+                "degree": "Doctor of Philosophy (PhD)",
+                "institution": "Swinburne University of Technology",
+                "period": "2019 - 2023",
+                "field": "Internet of Things",
+                "logo": "/education/swinburne.svg"
+            },
+            {
+                "degree": "Master of Technology (MTech)",
+                "institution": "Indian Institute of Technology (ISM), Dhanbad",
+                "period": "2014 - 2016",
+                "field": "Computer Science (Spl in Information Security)",
+                "logo": "/education/iitism.png"
+            },
+            {
+                "degree": "Bachelor of Technology (BTech)",
+                "institution": "Calcutta Institute of Technology",
+                "period": "2010 - 2014",
+                "field": "Computer Science & Engineering",
+                "logo": "/education/cit.png"
+            }
+        ]
+    },
+    "research": {
+        "description": "My research comprised of various projects in transportation and manufacturing domain which involved analyzing large, complex sensor data sets to uncover meaningful patterns. I also explored the application of machine learning models for object detection, to better understand and improve real-world processes.",
+        "thesis": {
+            "title": "Doctoral Thesis",
+            "url": "https://1drv.ms/b/c/ee37ff24155ee034/IQCKI6DQBIRoR74dkjcQalXwAYUEwoGsBi-G9ievMWnvCS8?e=535dFD"
+        },
+        "publications": [
+            {
+                "id": "1",
+                "title": "Introduction to Benchmarking IoT Middleware",
+                "venue": "IET",
+                "year": "2024",
+                "authors": "Mondal, S., Jayaraman, P.P., Haghighi P.D., Hassani, A., Georgakopoulos, D.",
+                "url": "https://digital-library.theiet.org/doi/10.1049/pbpc027e_ch4",
+                "type": "Book Chapter",
+                "doi": "https://digital-library.theiet.org/doi/10.1049/pbpc027e_ch4"
+            },
+            {
+                "id": "2",
+                "title": "Situation-Aware IoT Data Generation towards Performance Evaluation of IoT Middleware Platforms",
+                "venue": "IEEE Xplore",
+                "year": "2023",
+                "authors": "Mondal, S., Jayaraman, P. P., Delir Haghighi, P., Hassani, A., & Georgakopoulos, D.",
+                "url": "https://ieeexplore.ieee.org/abstract/document/10214941",
+                "type": "Journal",
+                "doi": "https://ieeexplore.ieee.org/abstract/document/10214941"
+            },
+            {
+                "id": "3",
+                "title": "Situation-Aware IoT Data Generation towards Performance Evaluation of IoT Middleware Platforms",
+                "venue": "MDPI Sensors",
+                "year": "2023",
+                "authors": "Mondal, S., Jayaraman, P. P., Delir Haghighi, P., Hassani, A., & Georgakopoulos, D.",
+                "url": "https://www.mdpi.com/1424-8220/23/1/7",
+                "type": "Journal",
+                "doi": "https://www.mdpi.com/1424-8220/23/1/7"
+            },
+            {
+                "id": "4",
+                "title": "Modelling IoT Application Requirements for Benchmarking IoT Middleware Platforms",
+                "venue": "International Conference on Information Integration and Web Intelligence",
+                "year": "2021",
+                "authors": "Mondal, S., Hassani, A., Jayaraman, P.P., Delir Haghighi, P., Georgakopoulos, D.",
+                "url": "https://dl.acm.org/doi/abs/10.1145/3487664.3487742",
+                "type": "Conference",
+                "doi": "https://dl.acm.org/doi/abs/10.1145/3487664.3487742"
+            },
+            {
+                "id": "5",
+                "title": "Face Recognition Using PCA and Minimum Distance Classifier",
+                "venue": "Advances in Intelligent Systems and Computing",
+                "year": "2017",
+                "authors": "Mondal, S., & Bag, S.",
+                "url": "https://link.springer.com/chapter/10.1007/978-981-10-3153-3_39",
+                "type": "Book Chapter",
+                "doi": "https://link.springer.com/chapter/10.1007/978-981-10-3153-3_39"
+            }
+        ]
+    },
+    "projects": [
+        {
+            "id": "1",
+            "title": "IoT Application Data Simulation",
+            "category": "Research / IoT",
+            "description": "SA-IoTDG — a simulation tool for generating realistic IoT application data for testing and development of IoT systems, with published research in MDPI Sensors.",
+            "technologies": [
+                "Python",
+                "React",
+                "Node.js"
+            ],
+            "status": "Published",
+            "progress": 100,
+            "image": "/projects/iot-simulation.jpg",
+            "githubUrl": "https://github.com/ShalmolyMondal/SA-IoTDG",
+            "pdfUrl": "https://www.mdpi.com/1424-8220/23/1/7",
+            "featured": true
+        },
+        {
+            "id": "2",
+            "title": "Face Recognition in Various Lighting",
+            "category": "Computer Vision",
+            "description": "Research on face recognition techniques using PCA and DC methods to improve accuracy across varying lighting conditions.",
+            "technologies": [
+                "Python",
+                "OpenCV",
+                "MATLAB"
+            ],
+            "status": "Published",
+            "progress": 100,
+            "image": "/projects/face-recognition.jpg",
+            "pdfUrl": "https://shalmolymondal.com/upload/doc/FaceRecognition_PCA_DC_2017.pdf",
+            "featured": true
+        },
+        {
+            "id": "3",
+            "title": "Road Marking Detection",
+            "category": "Computer Vision",
+            "description": "A bicycle lane detection system using computer vision to detect and classify road markings for safer cycling infrastructure.",
+            "technologies": [
+                "Python",
+                "OpenCV",
+                "Deep Learning",
+                "Image Processing"
+            ],
+            "status": "Completed",
+            "progress": 100,
+            "image": "/projects/road-marking.jpg",
+            "githubUrl": "https://github.com/ShalmolyMondal/bicycle-lane-detector",
+            "featured": true
+        }
+    ],
+    "art": [
+        {
+            "id": "1",
+            "title": "Abstract Data Flow",
+            "description": "Digital art representing the flow of data through pipelines",
+            "image": "/art/data-flow.png",
+            "category": "Digital Art",
+            "date": "2024-01-15"
+        },
+        {
+            "id": "2",
+            "title": "Neural Networks",
+            "description": "Visualization of neural network architecture",
+            "image": "/art/neural-networks.png",
+            "category": "Generative Art",
+            "date": "2024-02-20"
+        },
+        {
+            "id": "3",
+            "title": "Code Poetry",
+            "description": "Artistic interpretation of beautiful code structures",
+            "image": "/art/code-poetry.png",
+            "category": "Digital Art",
+            "date": "2024-03-10"
+        }
+    ],
+    "blogs": [
+        {
+            "id": "1",
+            "title": "What is ETL? The Ultimate Beginner's Guide",
+            "category": "Data Engineering",
+            "excerpt": "A comprehensive guide to Extract, Transform, and Load processes, explaining how data pipelines work in modern data engineering.",
+            "date": "2024-03-18",
+            "readTime": "6 min read",
+            "url": "https://medium.com/codex/what-is-etl-the-ultimate-beginners-guide-f449e8fcb444",
+            "featured": true,
+            "image": "/blog/etl.png"
+        },
+        {
+            "id": "2",
+            "title": "Building Scalable Data Pipelines",
+            "category": "Engineering",
+            "excerpt": "Best practices for designing and implementing data pipelines that scale with your business needs.",
+            "date": "2024-05-13",
+            "readTime": "12 min read",
+            "url": "https://shalmoly.medium.com/scalable-data-pipelines",
+            "featured": true,
+            "image": "/blog/scalable.png"
+        },
+        {
+            "id": "3",
+            "title": "Real-time Analytics: A Deep Dive",
+            "category": "Analytics",
+            "excerpt": "Exploring the architecture and implementation of real-time analytics systems using modern streaming technologies.",
+            "date": "2024-11-15",
+            "readTime": "15 min read",
+            "url": "https://shalmoly.medium.com/realtime-analytics",
+            "featured": false,
+            "image": "/blog/realtime.png"
+        }
+    ],
+    "skills": {
+        "languages": [
+            "Python",
+            "SQL",
+            "C",
+            "MATLAB",
+            "React.js"
+        ],
+        "researchAndML": [
+            "Independent Research",
+            "Deep Learning",
+            "Digital Image Processing",
+            "Data Modeling",
+            "Data Analytics",
+            "Research Supervision",
+            "Online Research"
+        ],
+        "dataAndIoT": [
+            "Internet of Things (IoT)",
+            "Data Pipelines",
+            "Data Simulation",
+            "Sensor Data Analysis"
+        ],
+        "web": [
+            "React.js",
+            "Next.js",
+            "TailwindCSS",
+            "TypeScript"
+        ],
+        "tools": [
+            "Amazon Web Services (AWS)",
+            "Git",
+            "Docker",
+            "DSA",
+            "Cryptography",
+            "Operating Systems"
+        ]
+    }
+}
