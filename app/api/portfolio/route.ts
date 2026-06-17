@@ -1,24 +1,48 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { execFile } from 'child_process';
-import { promisify } from 'util';
 import { ADMIN_PASSWORD, getPortfolioData, savePortfolioData } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
 
-const execFileAsync = promisify(execFile);
-
-async function git(args: string[]) {
-    const { stdout } = await execFileAsync('git', args, {
-        cwd: process.cwd(),
-        maxBuffer: 1024 * 1024,
-    });
-    return stdout.trim();
+interface GitHubFileResponse {
+    sha: string;
+    content?: string;
 }
 
-async function deploySavedChanges() {
-    const token = process.env.DEPLOY_TOKEN ?? process.env.CMS_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
+function getDeployToken() {
+    return process.env.DEPLOY_TOKEN ?? process.env.CMS_GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
+}
+
+function getRepoSlug() {
+    return process.env.CMS_DEPLOY_REPO ?? process.env.GITHUB_REPOSITORY ?? 'ShalmolyMondal/shalmolymondal.com';
+}
+
+async function githubRequest<T>(path: string, init: RequestInit, token: string): Promise<T> {
+    const response = await fetch(`https://api.github.com${path}`, {
+        ...init,
+        headers: {
+            Accept: 'application/vnd.github+json',
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+            'X-GitHub-Api-Version': '2022-11-28',
+            ...init.headers,
+        },
+        cache: 'no-store',
+    });
+
+    const text = await response.text();
+    const body = text ? JSON.parse(text) as { message?: string } : null;
+
+    if (!response.ok) {
+        throw new Error(body?.message ?? `GitHub API returned ${response.status}`);
+    }
+
+    return body as T;
+}
+
+async function deploySavedChanges(data: unknown) {
+    const token = getDeployToken();
 
     if (!token) {
         return {
@@ -29,56 +53,61 @@ async function deploySavedChanges() {
     }
 
     try {
-        const branch = process.env.CMS_DEPLOY_BRANCH || await git(['branch', '--show-current']) || 'main';
-        const status = await git(['status', '--porcelain', '--', 'data/portfolio.json', 'public', 'docs']);
+        const branch = process.env.CMS_DEPLOY_BRANCH || 'main';
+        const repo = getRepoSlug();
+        const filePath = 'data/portfolio.json';
+        const encodedPath = filePath.split('/').map(encodeURIComponent).join('/');
+        const file = await githubRequest<GitHubFileResponse>(
+            `/repos/${repo}/contents/${encodedPath}?ref=${encodeURIComponent(branch)}`,
+            { method: 'GET' },
+            token,
+        );
+        const nextContent = `${JSON.stringify(data, null, 2)}\n`;
+        const encodedContent = Buffer.from(nextContent, 'utf8').toString('base64');
+        const currentContent = file.content ? Buffer.from(file.content, 'base64').toString('utf8') : '';
 
-        if (!status) {
+        if (currentContent === nextContent) {
             return {
                 deployed: false,
                 skipped: true,
-                message: 'Saved locally. No content or asset changes to deploy.',
+                message: 'Saved. No GitHub changes to deploy.',
             };
         }
 
-        await git(['add', 'data/portfolio.json', 'public', 'docs']);
-
         const timestamp = new Date().toISOString();
-        await execFileAsync('git', [
-            '-c',
-            'user.name=Portfolio CMS',
-            '-c',
-            'user.email=cms@local',
-            'commit',
-            '-m',
-            `Update portfolio content ${timestamp}`,
-        ], {
-            cwd: process.cwd(),
-            maxBuffer: 1024 * 1024,
-        });
-
-        const authHeader = Buffer.from(`x-access-token:${token}`).toString('base64');
-        await execFileAsync('git', [
-            '-c',
-            `http.https://github.com/.extraheader=AUTHORIZATION: basic ${authHeader}`,
-            'push',
-            'origin',
-            `HEAD:${branch}`,
-        ], {
-            cwd: process.cwd(),
-            maxBuffer: 1024 * 1024,
-        });
+        await githubRequest(
+            `/repos/${repo}/contents/${encodedPath}`,
+            {
+                method: 'PUT',
+                body: JSON.stringify({
+                    message: `Update portfolio content ${timestamp}`,
+                    content: encodedContent,
+                    sha: file.sha,
+                    branch,
+                    committer: {
+                        name: 'Portfolio CMS',
+                        email: 'cms@local',
+                    },
+                    author: {
+                        name: 'Portfolio CMS',
+                        email: 'cms@local',
+                    },
+                }),
+            },
+            token,
+        );
 
         return {
             deployed: true,
             skipped: false,
-            message: `Saved, committed, and pushed to origin/${branch}.`,
+            message: `Saved and committed data/portfolio.json to ${repo}@${branch}.`,
         };
     } catch (error) {
         const message = error instanceof Error ? error.message : 'Unknown deploy error';
         return {
             deployed: false,
             skipped: false,
-            message: `Saved locally, but deploy failed: ${message}`,
+            message: `Save failed during GitHub deploy: ${message}`,
         };
     }
 }
@@ -122,12 +151,26 @@ export async function PUT(request: Request) {
             return NextResponse.json({ error: 'Invalid password' }, { status: 401 });
         }
 
-        savePortfolioData(data);
+        const token = getDeployToken();
+        let localSaveError: string | null = null;
+
+        try {
+            savePortfolioData(data);
+        } catch (error) {
+            localSaveError = error instanceof Error ? error.message : 'Unknown local save error';
+            if (!token) {
+                throw error;
+            }
+        }
+
         ['/', '/about', '/work', '/art', '/blog', '/contact', '/admin', '/admit'].forEach((path) => {
             revalidatePath(path);
         });
         revalidatePath('/', 'layout');
-        const deploy = await deploySavedChanges();
+        const deploy = await deploySavedChanges(data);
+        if (localSaveError && deploy.deployed) {
+            deploy.message = `${deploy.message} Local runtime file write was skipped: ${localSaveError}`;
+        }
         return NextResponse.json({ success: true, data, deploy });
     } catch {
         return NextResponse.json({ error: 'Failed to update data' }, { status: 500 });
