@@ -19,17 +19,31 @@ function getRepoSlug() {
 }
 
 async function githubRequest<T>(path: string, init: RequestInit, token: string): Promise<T> {
-    const response = await fetch(`https://api.github.com${path}`, {
-        ...init,
-        headers: {
-            Accept: 'application/vnd.github+json',
-            Authorization: `Bearer ${token}`,
-            'Content-Type': 'application/json',
-            'X-GitHub-Api-Version': '2022-11-28',
-            ...init.headers,
-        },
-        cache: 'no-store',
-    });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 20000);
+    let response: Response;
+
+    try {
+        response = await fetch(`https://api.github.com${path}`, {
+            ...init,
+            headers: {
+                Accept: 'application/vnd.github+json',
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
+                'X-GitHub-Api-Version': '2022-11-28',
+                ...init.headers,
+            },
+            cache: 'no-store',
+            signal: controller.signal,
+        });
+    } catch (error) {
+        if (error instanceof Error && error.name === 'AbortError') {
+            throw new Error('GitHub API request timed out');
+        }
+        throw error;
+    } finally {
+        clearTimeout(timeout);
+    }
 
     const text = await response.text();
     const body = text ? JSON.parse(text) as { message?: string } : null;
@@ -152,26 +166,29 @@ export async function PUT(request: Request) {
         }
 
         const token = getDeployToken();
-        let localSaveError: string | null = null;
+        const deploy = token ? await deploySavedChanges(data) : null;
 
-        try {
+        if (deploy && !deploy.deployed && !deploy.skipped) {
+            return NextResponse.json({ success: false, error: deploy.message, deploy }, { status: 500 });
+        }
+
+        if (!token) {
             savePortfolioData(data);
-        } catch (error) {
-            localSaveError = error instanceof Error ? error.message : 'Unknown local save error';
-            if (!token) {
-                throw error;
-            }
         }
 
         ['/', '/about', '/work', '/art', '/blog', '/contact', '/admin', '/admit'].forEach((path) => {
             revalidatePath(path);
         });
         revalidatePath('/', 'layout');
-        const deploy = await deploySavedChanges(data);
-        if (localSaveError && deploy.deployed) {
-            deploy.message = `${deploy.message} Local runtime file write was skipped: ${localSaveError}`;
-        }
-        return NextResponse.json({ success: true, data, deploy });
+        return NextResponse.json({
+            success: true,
+            data,
+            deploy: deploy ?? {
+                deployed: false,
+                skipped: true,
+                message: 'Saved locally. Deploy skipped because no deploy token is configured.',
+            },
+        });
     } catch {
         return NextResponse.json({ error: 'Failed to update data' }, { status: 500 });
     }
