@@ -18,6 +18,10 @@ function getRepoSlug() {
     return process.env.CMS_DEPLOY_REPO ?? process.env.GITHUB_REPOSITORY ?? 'ShalmolyMondal/shalmolymondal.com';
 }
 
+function isHostedRuntime() {
+    return Boolean(process.env.VERCEL || process.env.VERCEL_ENV);
+}
+
 async function githubRequest<T>(path: string, init: RequestInit, token: string): Promise<T> {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 20000);
@@ -172,6 +176,19 @@ export async function PUT(request: Request) {
             return NextResponse.json({ success: false, error: deploy.message, deploy }, { status: 500 });
         }
 
+        if (!token && isHostedRuntime()) {
+            const message = 'DEPLOY_TOKEN is not configured in the production runtime. Add DEPLOY_TOKEN to the Vercel environment variables; GitHub repository secrets are not visible to the running website.';
+            return NextResponse.json({
+                success: false,
+                error: message,
+                deploy: {
+                    deployed: false,
+                    skipped: false,
+                    message,
+                },
+            }, { status: 500 });
+        }
+
         if (!token) {
             savePortfolioData(data);
         }
@@ -189,7 +206,8 @@ export async function PUT(request: Request) {
                 message: 'Saved locally. Deploy skipped because no deploy token is configured.',
             },
         });
-    } catch {
-        return NextResponse.json({ error: 'Failed to update data' }, { status: 500 });
+    } catch (error) {
+        const message = error instanceof Error ? error.message : 'Failed to update data';
+        return NextResponse.json({ success: false, error: message }, { status: 500 });
     }
 }
