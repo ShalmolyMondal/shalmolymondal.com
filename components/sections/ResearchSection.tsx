@@ -33,7 +33,7 @@ export function ResearchSection({ research }: ResearchSectionProps) {
               <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#6366F1] via-[#818CF8] to-transparent" />
 
               <p className="text-[#E0E7FF] text-lg leading-relaxed mb-8 pl-6 italic">
-                "{research.description}"
+                &quot;{research.description}&quot;
               </p>
               {research.thesis.url && (
                 <div className="pl-6">
@@ -98,7 +98,7 @@ export function ResearchSection({ research }: ResearchSectionProps) {
                           </a>
                         )}
                         <a
-                          href={pub.url}
+                          href={pub.pdfUrl ?? pub.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] text-xs font-medium transition-colors"

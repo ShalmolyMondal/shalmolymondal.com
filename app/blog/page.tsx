@@ -3,10 +3,14 @@ import Footer from '@/components/Footer';
 import AnimatedGridBackground from '@/components/AnimatedGridBackground';
 import FadeIn from '@/components/FadeIn';
 import FlowingGradient from '@/components/FlowingGradient';
-import { getBlogs } from '@/lib/data';
+import { getBlogs, getSiteContent } from '@/lib/data';
+
+export const dynamic = 'force-dynamic';
 
 export default function BlogPage() {
     const blogs = getBlogs();
+    const site = getSiteContent();
+    const content = site.blogPage;
 
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white relative overflow-hidden">
@@ -20,11 +24,11 @@ export default function BlogPage() {
                         <div className="text-center mb-12">
                             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#6366F1]/25 bg-[#6366F1]/5 text-xs text-[#818CF8] tracking-wider uppercase font-medium mb-4">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-pulse"></span>
-                                Latest Writings
+                                {content.eyebrow}
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">Blog</span></h1>
+                            <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
                             <p className="text-base text-[#939DB8] max-w-2xl mx-auto leading-relaxed">
-                                Thoughts on data engineering, technology, and more
+                                {content.description}
                             </p>
                         </div>
                     </FadeIn>
@@ -54,7 +58,7 @@ export default function BlogPage() {
                                                     </span>
                                                     {blog.featured && (
                                                         <span className="px-2.5 py-1 bg-[#4F46E5]/15 text-[#A5B4FC] text-xs font-medium rounded-full border border-[#4F46E5]/20">
-                                                            Featured
+                                                            {site.labels.featured}
                                                         </span>
                                                     )}
                                                 </div>
@@ -82,7 +86,7 @@ export default function BlogPage() {
 
                                                 {/* Read More Link */}
                                                 <div className="flex items-center gap-2 text-[#6366F1] font-medium text-sm mt-3 group-hover:gap-3 transition-all">
-                                                    Read Article
+                                                    {site.labels.readArticle}
                                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                                     </svg>

@@ -40,7 +40,7 @@ export default function ShootingStarsBackground() {
         }
 
         let stars: Star[] = [];
-        let shootingStars: ShootingStar[] = [];
+        const shootingStars: ShootingStar[] = [];
 
         const initStars = () => {
             stars = [];
@@ -168,13 +168,10 @@ export default function ShootingStarsBackground() {
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        let paused = false;
         const handleVisibility = () => {
             if (document.hidden) {
-                paused = true;
                 cancelAnimationFrame(animationFrameId);
             } else {
-                paused = false;
                 animationFrameId = requestAnimationFrame(animate);
             }
         };

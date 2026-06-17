@@ -1,9 +1,9 @@
 'use client';
 
-import { useState, memo, useCallback } from 'react';
+import { useState, memo } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { Briefcase, GraduationCap, Wrench, Trophy, Code, Database, Microscope, FlaskConical, Monitor } from 'lucide-react';
+import { Briefcase, GraduationCap, Wrench, Trophy, Code, Database, Microscope, Monitor } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
 import SpotlightCard from '@/components/SpotlightCard';
 import type { Skills, Experience, Education } from '@/lib/data';

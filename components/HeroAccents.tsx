@@ -11,6 +11,12 @@ interface Particle {
   duration: number;
   delay: number;
   color: string;
+  xPath: [number, number, number];
+}
+
+function seededRandom(seed: number) {
+  const value = Math.sin(seed) * 10000;
+  return value - Math.floor(value);
 }
 
 export default function HeroAccents() {
@@ -31,12 +37,13 @@ export default function HeroAccents() {
     for (let i = 0; i < particleCount; i++) {
       generatedParticles.push({
         id: i,
-        initialX: Math.random() * 100 + '%',
-        initialY: Math.random() * 100 + '%',
-        size: Math.random() * 3 + 1.5,
-        duration: Math.random() * 8 + 12,
-        delay: Math.random() * 2,
-        color: colors[Math.floor(Math.random() * colors.length)],
+        initialX: seededRandom(i + 1) * 100 + '%',
+        initialY: seededRandom(i + 11) * 100 + '%',
+        size: seededRandom(i + 21) * 3 + 1.5,
+        duration: seededRandom(i + 31) * 8 + 12,
+        delay: seededRandom(i + 41) * 2,
+        color: colors[Math.floor(seededRandom(i + 51) * colors.length)],
+        xPath: [0, (seededRandom(i + 61) - 0.5) * 200, (seededRandom(i + 71) - 0.5) * 100],
       });
     }
 
@@ -64,7 +71,7 @@ export default function HeroAccents() {
             opacity: [0, 0.6, 0.4, 0],
             scale: [0, 1, 1, 0],
             y: [0, -100, 100, -150],
-            x: [0, (Math.random() - 0.5) * 200, (Math.random() - 0.5) * 100],
+            x: particle.xPath,
           }}
           transition={{
             duration: particle.duration,

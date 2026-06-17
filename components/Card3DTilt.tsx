@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useState, ReactNode } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'motion/react';
+import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'motion/react';
 
 interface Card3DTiltProps {
   children: ReactNode;
@@ -28,6 +28,9 @@ export default function Card3DTilt({
 
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], [tiltDegree, -tiltDegree]);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], [-tiltDegree, tiltDegree]);
+  const glareX = useTransform(mouseXSpring, [-0.5, 0.5], [0, 100]);
+  const glareY = useTransform(mouseYSpring, [-0.5, 0.5], [0, 100]);
+  const glareBackground = useMotionTemplate`radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.1) 0%, transparent 50%)`;
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -83,11 +86,7 @@ export default function Card3DTilt({
         <motion.div
           className="pointer-events-none absolute inset-0 rounded-xl opacity-0"
           style={{
-            background: `radial-gradient(circle at ${
-              (useTransform(mouseXSpring, [-0.5, 0.5], [0, 100]).get())
-            }% ${
-              (useTransform(mouseYSpring, [-0.5, 0.5], [0, 100]).get())
-            }%, rgba(255,255,255,0.1) 0%, transparent 50%)`,
+            background: glareBackground,
           }}
           animate={{
             opacity: isHovered ? 1 : 0,

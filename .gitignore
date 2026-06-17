@@ -179,3 +179,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 >>>>>>> f332147 (Add project files from ZIP)
+
+# caveman
+.agents/
+.claude/
+.clinerules/
+.cursor/
+.windsurf/
+.opencode/
+.github/copilot-instructions.md
+skills-lock.json

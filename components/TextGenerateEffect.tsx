@@ -27,7 +27,7 @@ export default function TextGenerateEffect({
                 delay: (i) => i * 0.15 + delay, // Staggered delay + initial delay
             }
         );
-    }, [scope.current, animate, delay]);
+    }, [animate, delay]);
 
     const renderWords = () => {
         return (

@@ -1,21 +1,20 @@
 'use client';
 
 import Link from 'next/link';
-import type { Personal } from '@/lib/data';
-import TypedText from '@/components/TypedText';
+import type { HeroContent, Personal } from '@/lib/data';
 import FadeIn from '@/components/FadeIn';
 import ShootingStarsBackground from '@/components/ShootingStarsBackground';
 import Spotlight from '@/components/Spotlight';
-import TextGenerateEffect from '@/components/TextGenerateEffect';
 import ScrollIndicator from '@/components/ScrollIndicator';
 import { CodeWindow } from '@/components/CodeWindow';
 import RotatingBadge from '@/components/RotatingBadge';
 
 interface HeroSectionProps {
   personal: Personal;
+  content: HeroContent;
 }
 
-export function HeroSection({ personal }: HeroSectionProps) {
+export function HeroSection({ personal, content }: HeroSectionProps) {
 
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center bg-[#0B0C14] antialiased w-full">
@@ -36,7 +35,7 @@ export function HeroSection({ personal }: HeroSectionProps) {
           <div className="space-y-4 text-left">
             <FadeIn direction="up" delay={0.1}>
               <RotatingBadge
-                words={['Researcher', 'Data Engineer', 'Creative Soul']}
+                words={content.badgeWords}
                 duration={3500}
               />
             </FadeIn>
@@ -44,36 +43,36 @@ export function HeroSection({ personal }: HeroSectionProps) {
             <div className="space-y-2">
               <FadeIn direction="up" delay={0.2}>
                 <h1 className="text-[3.4rem] md:text-[4.2rem] lg:text-[5.4rem] font-bold tracking-tight leading-[1.15]">
-                  <span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">Hi, I am {personal.name}!</span>
+                  <span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.greetingPrefix} {personal.name}{content.headlineSuffix}</span>
                 </h1>
               </FadeIn>
 
               <FadeIn direction="up" delay={0.3}>
                 <div className="text-2xl md:text-3xl text-neutral-300 font-light max-w-2xl">
-                  Welcome to my digital sanctuary.
+                  {content.subheading}
                 </div>
               </FadeIn>
             </div>
 
             <FadeIn direction="up" delay={0.4}>
               <p className="text-base md:text-lg text-neutral-400 max-w-2xl leading-relaxed">
-                I'm a data engineer, former researcher, and creative soul. Here, I share my work, my writing, and my art — thoughtfully brought together in one place.
+                {content.body}
               </p>
             </FadeIn>
 
             <FadeIn direction="up" delay={0.5}>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
-                  href="/contact"
+                  href={content.primaryCtaHref}
                   className="px-6 py-3 bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white hover:from-[#818CF8] hover:to-[#6366F1] rounded-full font-medium transition-all text-sm shadow-lg shadow-[#6366F1]/20"
                 >
-                  Contact me here →
+                  {content.primaryCtaLabel}
                 </Link>
                 <Link
-                  href="/work"
+                  href={content.secondaryCtaHref}
                   className="px-6 py-3 bg-[#1a1a1a] hover:bg-[#262626] rounded-full font-medium transition-all text-sm border border-[#262626] text-white"
                 >
-                  View My Work
+                  {content.secondaryCtaLabel}
                 </Link>
               </div>
             </FadeIn>

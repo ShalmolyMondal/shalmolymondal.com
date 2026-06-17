@@ -3,11 +3,6 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
-interface Skill {
-  name: string;
-  icon?: string;
-}
-
 interface AnimatedSkillsOrbProps {
   title: string;
   skills: string[];

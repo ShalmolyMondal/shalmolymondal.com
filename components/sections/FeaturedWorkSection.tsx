@@ -19,7 +19,7 @@ export function FeaturedWorkSection({ featuredProjects }: FeaturedWorkSectionPro
 
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
-          {featuredProjects.map((project, index) => (
+          {featuredProjects.map((project) => (
             <div key={project.id}>
               <ProjectCard project={project} />
             </div>

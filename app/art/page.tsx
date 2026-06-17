@@ -1,10 +1,13 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import Image from 'next/image';
-import { getArt } from '@/lib/data';
+import { getArt, getSiteContent } from '@/lib/data';
+
+export const dynamic = 'force-dynamic';
 
 export default function ArtPage() {
     const artPieces = getArt();
+    const content = getSiteContent().artPage;
 
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white">
@@ -14,9 +17,9 @@ export default function ArtPage() {
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Header */}
                     <div className="text-center mb-16">
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">Art Gallery</span></h1>
+                        <h1 className="text-5xl md:text-6xl font-bold mb-6"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
                         <p className="text-xl text-[#939DB8]">
-                            Creative expressions and digital art
+                            {content.description}
                         </p>
                     </div>
 

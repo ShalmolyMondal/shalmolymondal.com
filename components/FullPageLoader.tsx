@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 
 interface FullPageLoaderProps {
   children: React.ReactNode;
+  name?: string;
 }
 
-export default function FullPageLoader({ children }: FullPageLoaderProps) {
+export default function FullPageLoader({ children, name = 'Shalmoly' }: FullPageLoaderProps) {
   const [isReady, setIsReady] = useState(false);
   const [displayedText, setDisplayedText] = useState('');
-  const name = 'Shalmoly';
 
   useEffect(() => {
     // Typing animation
@@ -28,7 +28,7 @@ export default function FullPageLoader({ children }: FullPageLoaderProps) {
     }, 80);
 
     return () => clearInterval(typingInterval);
-  }, []);
+  }, [name]);
 
   if (!isReady) {
     return (

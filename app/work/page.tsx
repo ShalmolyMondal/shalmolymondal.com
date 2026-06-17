@@ -6,7 +6,7 @@ import FadeIn from '@/components/FadeIn';
 import SpotlightCard from '@/components/SpotlightCard';
 import FlowingGradient from '@/components/FlowingGradient';
 import SkillRadar from '@/components/SkillRadar';
-import { getProjects, getResearch, getAbout, getSkills } from '@/lib/data';
+import { getProjects, getResearch, getAbout, getSkills, getSiteContent } from '@/lib/data';
 import type { Education } from '@/lib/data';
 import { Briefcase, GraduationCap, Database, Microscope, Code, Monitor } from 'lucide-react';
 
@@ -48,11 +48,15 @@ function InstitutionLogo({ edu }: { edu: Education }) {
     );
 }
 
+export const dynamic = 'force-dynamic';
+
 export default function WorkPage() {
     const projects = getProjects().filter(p => p.featured).slice(0, 3);
     const research = getResearch();
     const about = getAbout();
     const skills = getSkills();
+    const site = getSiteContent();
+    const content = site.workPage;
 
     const skillGroups = [
         { title: 'Languages', items: skills.languages },
@@ -72,19 +76,19 @@ export default function WorkPage() {
                     {/* Header */}
                     <FadeIn direction="up">
                         <div className="text-center mb-12">
-                            <h1 className="text-5xl md:text-6xl font-bold mb-4"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">My Work</span></h1>
+                            <h1 className="text-5xl md:text-6xl font-bold mb-4"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
                             <p className="text-lg text-[#939DB8] max-w-2xl mx-auto">
-                                From research to production — projects I've built and academic contributions
+                                {content.description}
                             </p>
                             <a
-                                href="/resume.pdf"
+                                href={content.resumeHref}
                                 download
                                 className="group inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-xl border border-[#727DA1]/15 bg-[#171926]/50 hover:border-[#6366F1]/30 hover:bg-[#171926] transition-all"
                             >
                                 <svg className="w-4 h-4 text-[#818CF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                                <span className="text-sm font-medium text-[#C9D3EE] group-hover:text-white transition-colors">Download Resume</span>
+                                <span className="text-sm font-medium text-[#C9D3EE] group-hover:text-white transition-colors">{content.resumeLabel}</span>
                             </a>
                         </div>
                     </FadeIn>
@@ -93,7 +97,7 @@ export default function WorkPage() {
                     <section className="mb-20">
                         <FadeIn direction="up">
                             <h2 className="text-2xl font-bold mb-10">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Experience</span>
+                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.experienceTitle}</span>
                             </h2>
                         </FadeIn>
 
@@ -177,7 +181,7 @@ export default function WorkPage() {
                     <section className="mb-20">
                         <FadeIn direction="up">
                             <h2 className="text-2xl font-bold mb-6">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Education</span>
+                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.educationTitle}</span>
                             </h2>
                         </FadeIn>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
@@ -204,7 +208,7 @@ export default function WorkPage() {
                     <section className="mb-20">
                         <FadeIn direction="up">
                             <h2 className="text-2xl font-bold mb-8">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Skills</span>
+                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.skillsTitle}</span>
                             </h2>
                         </FadeIn>
 
@@ -242,11 +246,11 @@ export default function WorkPage() {
 
                     {/* Featured Projects */}
                     <section className="mb-16">
-                        <h2 className="text-2xl font-bold mb-6"><span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Projects</span></h2>
+                        <h2 className="text-2xl font-bold mb-6"><span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.projectsTitle}</span></h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {projects.map((project, index) => (
                                 <FadeIn key={project.id} direction="up" delay={index * 0.15}>
-                                    <ProjectCard project={project} />
+                                    <ProjectCard project={project} labels={site.labels} />
                                 </FadeIn>
                             ))}
                         </div>
@@ -256,7 +260,7 @@ export default function WorkPage() {
                     <section className="mb-16">
                         {/* Thesis */}
                         <h2 className="text-2xl font-bold mb-6">
-                            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Thesis</span>
+                            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.thesisTitle}</span>
                         </h2>
                         <SpotlightCard className="bg-[#171926] border border-[#727DA1]/15 rounded-xl p-6 mb-8">
                             <p className="text-[#C9D3EE] text-sm leading-relaxed">
@@ -272,7 +276,7 @@ export default function WorkPage() {
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                     </svg>
-                                    Read Thesis
+                                    {content.thesisLinkLabel}
                                 </a>
                             )}
                         </SpotlightCard>
@@ -280,7 +284,7 @@ export default function WorkPage() {
                         {/* Publications */}
                         <div>
                             <h2 className="text-2xl font-bold mb-6">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Publications</span>
+                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.publicationsTitle}</span>
                             </h2>
                             <div className="space-y-8">
                                 {research.publications.map((pub) => (
@@ -306,19 +310,19 @@ export default function WorkPage() {
                                                         rel="noopener noreferrer"
                                                         className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#6366F1]/15 text-[#818CF8] text-xs font-medium rounded border border-[#6366F1]/30 hover:border-[#6366F1]/60 hover:text-[#C9D3EE] transition-colors"
                                                     >
-                                                        DOI
+                                                        {content.doiLabel}
                                                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                                         </svg>
                                                     </a>
                                                 )}
                                                 <a
-                                                    href={pub.url}
+                                                    href={pub.pdfUrl ?? pub.url}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] text-xs font-medium transition-colors"
                                                 >
-                                                    View Publication
+                                                    {content.publicationLinkLabel}
                                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                                     </svg>

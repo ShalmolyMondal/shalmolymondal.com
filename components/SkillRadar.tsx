@@ -10,9 +10,9 @@ const initialData = [
     { group: 'Tool Tinkering', value: 0.8, tools: 'AWS, Docker, Git' },
 ];
 
-const CX = 200;
-const CY = 170;
-const R = 110;
+const CX = 220;
+const CY = 178;
+const R = 96;
 const LEVELS = 4;
 const SIDES = initialData.length;
 
@@ -122,10 +122,10 @@ export default function SkillRadar() {
         <div className="pb-2">
             <svg
                 ref={svgRef}
-                viewBox="0 0 400 340"
+                viewBox="0 0 440 356"
                 className="w-full select-none touch-none"
                 role="img"
-                aria-label="Interactive skill radar — drag vertices to adjust"
+                aria-label="Interactive skill radar. Drag vertices to adjust."
             >
                 {/* Grid levels */}
                 {Array.from({ length: LEVELS }, (_, l) => {
@@ -237,7 +237,7 @@ export default function SkillRadar() {
                     <g>
                         <rect x={CX - 95} y={CY - 14} width={190} height={28} rx={6} fill="#171926" fillOpacity={0.9} stroke="#6366F1" strokeWidth={0.75} strokeOpacity={0.4} />
                         <text x={CX} y={CY + 1} textAnchor="middle" dominantBaseline="central" fill="#C4B5FD" style={{ fontSize: '8px', fontWeight: 500, fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
-                            {activeData.tools} · {Math.round(activeData.value * 100)}%
+                            {activeData.group} · {Math.round(activeData.value * 100)}%
                         </text>
                     </g>
                 ) : (
@@ -246,6 +246,17 @@ export default function SkillRadar() {
                     </text>
                 )}
             </svg>
+            <div className="min-h-12 px-3">
+                <div className="rounded-lg border border-[#6366F1]/20 bg-[#171926]/70 px-3 py-2 text-center text-xs leading-relaxed text-[#C9D3EE]">
+                    {activeData ? (
+                        <span>
+                            <span className="font-semibold text-[#C4B5FD]">{activeData.group}:</span> {activeData.tools}
+                        </span>
+                    ) : (
+                        <span className="text-[#939DB8]">Hover or drag a point to view the related tools.</span>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }

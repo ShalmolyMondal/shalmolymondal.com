@@ -5,10 +5,13 @@ import SpotlightCard from '@/components/SpotlightCard';
 import MagneticButton from '@/components/MagneticButton';
 import FadeIn from '@/components/FadeIn';
 import FlowingGradient from '@/components/FlowingGradient';
-import { getPersonalInfo } from '@/lib/data';
+import { getPersonalInfo, getSiteContent } from '@/lib/data';
+
+export const dynamic = 'force-dynamic';
 
 export default function ContactPage() {
     const personal = getPersonalInfo();
+    const content = getSiteContent().contactPage;
 
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white flex flex-col relative overflow-hidden">
@@ -25,11 +28,11 @@ export default function ContactPage() {
                                 <div className="text-center mb-8">
                                     <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#6366F1]/25 bg-[#6366F1]/5 text-xs text-[#818CF8] tracking-wider uppercase font-medium mb-4">
                                         <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-pulse"></span>
-                                        Let&apos;s Connect
+                                        {content.eyebrow}
                                     </div>
-                                    <h1 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">Get In Touch</span></h1>
+                                    <h1 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
                                     <p className="text-sm text-[#939DB8] leading-relaxed">
-                                        I&apos;m always open to new opportunities and collaborations
+                                        {content.description}
                                     </p>
                                 </div>
 
@@ -43,7 +46,7 @@ export default function ContactPage() {
                                             </svg>
                                         </div>
                                         <div className="flex-1 min-w-0">
-                                            <h3 className="text-sm font-semibold text-white mb-0.5">Email</h3>
+                                            <h3 className="text-sm font-semibold text-white mb-0.5">{content.emailLabel}</h3>
                                             <a
                                                 href={`mailto:${personal.email}`}
                                                 className="text-sm text-[#939DB8] hover:text-[#6366F1] transition-colors truncate block"
@@ -62,7 +65,7 @@ export default function ContactPage() {
                                             </svg>
                                         </div>
                                         <div className="flex-1">
-                                            <h3 className="text-sm font-semibold text-white mb-0.5">Location</h3>
+                                            <h3 className="text-sm font-semibold text-white mb-0.5">{content.locationLabel}</h3>
                                             <p className="text-sm text-[#939DB8]">{personal.location}</p>
                                         </div>
                                     </div>
@@ -74,7 +77,7 @@ export default function ContactPage() {
                                         <div className="w-full border-t border-[#727DA1]/10"></div>
                                     </div>
                                     <div className="relative flex justify-center text-xs">
-                                        <span className="bg-[#171926] px-3 text-[#939DB8]">or connect via</span>
+                                        <span className="bg-[#171926] px-3 text-[#939DB8]">{content.dividerLabel}</span>
                                     </div>
                                 </div>
 
@@ -123,7 +126,7 @@ export default function ContactPage() {
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                         </svg>
-                                        Send Me an Email
+                                        {content.ctaLabel}
                                     </span>
                                 </MagneticButton>
                             </SpotlightCard>

@@ -1,12 +1,12 @@
 import { Database, Palette } from 'lucide-react';
 import FadeIn from '@/components/FadeIn';
+import type { CurrentFocusContent } from '@/lib/data';
 
-export function CurrentFocusSection() {
-  const focusItems = [
-    'Working as a Data Engineer',
-    'Creating thoughtful digital products',
-  ];
+interface CurrentFocusSectionProps {
+  content: CurrentFocusContent;
+}
 
+export function CurrentFocusSection({ content }: CurrentFocusSectionProps) {
   return (
     <section className="py-16 px-6 relative overflow-hidden">
 
@@ -14,20 +14,20 @@ export function CurrentFocusSection() {
         {/* Header Section */}
         <FadeIn direction="up" delay={0.1}>
           <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
-            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Current Focus</span>
+            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.title}</span>
           </h2>
         </FadeIn>
 
         <FadeIn direction="up" delay={0.3}>
           <p className="text-[#C9D3EE] text-base leading-relaxed mb-8 max-w-2xl">
-            Passionately invested in leveraging data to solve complex problems while building beautiful, functional digital experiences.
+            {content.description}
           </p>
         </FadeIn>
 
         {/* Focus Items - Cards with Left Border Accent */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {focusItems.map((item, index) => {
-            const isDataEngineer = index === 0;
+          {content.items.map((item, index) => {
+            const isDataEngineer = item.icon === 'database';
             const bgGradient = isDataEngineer ? 'bg-gradient-to-br from-blue-500/12 to-[#6366F1]/5' : 'bg-gradient-to-br from-amber-500/12 to-orange-500/5';
             const borderColor = isDataEngineer ? 'border-l-blue-500' : 'border-l-amber-500';
             const iconBg = isDataEngineer ? 'bg-blue-500/15' : 'bg-amber-500/15';
@@ -43,7 +43,7 @@ export function CurrentFocusSection() {
                       <Palette className={`w-5 h-5 ${iconColor}`} />
                     )}
                   </div>
-                  <p className="text-[#E0E7FF] text-base font-medium flex-1">{item}</p>
+                  <p className="text-[#E0E7FF] text-base font-medium flex-1">{item.title}</p>
                 </div>
               </FadeIn>
             );

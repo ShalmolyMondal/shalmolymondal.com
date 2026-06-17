@@ -94,12 +94,6 @@ export function middleware(request: NextRequest) {
   // Enable DNS prefetch for external resources
   response.headers.set('X-DNS-Prefetch-Control', 'on');
 
-  // Preload critical fonts
-  const linkHeaders = [
-    '</fonts/inter-var.woff2>; rel=preload; as=font; type=font/woff2; crossorigin',
-  ];
-  response.headers.set('Link', linkHeaders.join(', '));
-
   // Optimize image delivery
   if (pathname.includes('/public/') && pathname.match(/\.(png|jpg|jpeg|webp)$/)) {
     response.headers.set('Accept', 'image/webp,image/avif,image/jxl,image/*');

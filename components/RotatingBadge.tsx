@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
 interface RotatingBadgeProps {
   words: string[];
@@ -14,19 +14,13 @@ export default function RotatingBadge({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [charCount, setCharCount] = useState(0);
   const [phase, setPhase] = useState<'typing' | 'visible' | 'deleting'>('typing');
-  const rafRef = useRef<number>(0);
-  const lastTickRef = useRef(0);
-
   const TYPE_INTERVAL = 80;
-  const currentWord = words[currentIndex];
+  const currentWord = words[currentIndex] ?? '';
 
-  const tick = useCallback((timestamp: number) => {
-    if (!lastTickRef.current) lastTickRef.current = timestamp;
+  useEffect(() => {
+    if (phase !== 'typing') return;
 
-    const elapsed = timestamp - lastTickRef.current;
-
-    if (phase === 'typing' && elapsed >= TYPE_INTERVAL) {
-      lastTickRef.current = timestamp;
+    const timer = window.setInterval(() => {
       setCharCount((prev) => {
         const next = prev + 1;
         if (next >= currentWord.length) {
@@ -35,21 +29,10 @@ export default function RotatingBadge({
         }
         return next;
       });
-    }
+    }, TYPE_INTERVAL);
 
-    if (phase === 'typing') {
-      rafRef.current = requestAnimationFrame(tick);
-    }
+    return () => window.clearInterval(timer);
   }, [phase, currentWord]);
-
-  // Drive typing with rAF
-  useEffect(() => {
-    if (phase === 'typing') {
-      lastTickRef.current = 0;
-      rafRef.current = requestAnimationFrame(tick);
-      return () => cancelAnimationFrame(rafRef.current);
-    }
-  }, [phase, tick]);
 
   // Hold phase
   useEffect(() => {
@@ -61,9 +44,13 @@ export default function RotatingBadge({
   // Delete: clear instantly, advance word
   useEffect(() => {
     if (phase !== 'deleting') return;
-    setCharCount(0);
-    setCurrentIndex((prev) => (prev + 1) % words.length);
-    setPhase('typing');
+    const timer = window.setTimeout(() => {
+      setCharCount(0);
+      setCurrentIndex((prev) => (prev + 1) % words.length);
+      setPhase('typing');
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, [phase, words.length]);
 
   return (

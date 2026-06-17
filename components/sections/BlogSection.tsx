@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import type { Blog } from '@/lib/data';
+import type { Blog, SectionIntro, UiLabels } from '@/lib/data';
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid';
 import { BookOpen } from 'lucide-react';
 
 interface BlogSectionProps {
   blogs: Blog[];
+  content: SectionIntro;
+  labels: UiLabels;
 }
 
-export function BlogSection({ blogs }: BlogSectionProps) {
+export function BlogSection({ blogs, content, labels }: BlogSectionProps) {
 
   return (
     <section className="py-16 px-6 relative overflow-hidden bg-gradient-to-b from-[#6366F1]/6 via-transparent to-transparent">
@@ -18,10 +20,10 @@ export function BlogSection({ blogs }: BlogSectionProps) {
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
-            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Blog & Insights</span>
+            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.title}</span>
           </h2>
           <p className="text-[#C9D3EE] text-base leading-relaxed max-w-2xl">
-            In-depth guides, technical insights, and reflections on data engineering, product development, and technology.
+            {content.description}
           </p>
         </div>
 
@@ -50,7 +52,7 @@ export function BlogSection({ blogs }: BlogSectionProps) {
                   {i === 0 && (
                     <div className="absolute top-3 right-3">
                       <span className="px-3 py-1.5 bg-[#6366F1] text-white text-xs font-bold rounded-full uppercase tracking-wider">
-                        Featured
+                        {labels.featured}
                       </span>
                     </div>
                   )}
@@ -66,8 +68,8 @@ export function BlogSection({ blogs }: BlogSectionProps) {
         </BentoGrid>
 
         <div className="mt-10 text-center">
-          <Link href="/blog" className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-[#818CF8] font-medium transition-colors">
-            Read All Articles
+          <Link href={content.ctaHref ?? '/blog'} className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-[#818CF8] font-medium transition-colors">
+            {content.ctaLabel ?? 'Read All Articles'}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
         </div>

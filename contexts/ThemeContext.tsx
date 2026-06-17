@@ -16,16 +16,20 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
-        // Check localStorage for saved theme preference
-        const savedTheme = localStorage.getItem('theme') as Theme;
-        if (savedTheme) {
-            setTheme(savedTheme);
-        } else {
-            // Check system preference
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            setTheme(prefersDark ? 'dark' : 'light');
-        }
+        const timer = window.setTimeout(() => {
+            setMounted(true);
+            // Check localStorage for saved theme preference
+            const savedTheme = localStorage.getItem('theme') as Theme;
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else {
+                // Check system preference
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                setTheme(prefersDark ? 'dark' : 'light');
+            }
+        }, 0);
+
+        return () => window.clearTimeout(timer);
     }, []);
 
     useEffect(() => {
