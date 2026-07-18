@@ -31,7 +31,7 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
           {/* Featured - Left column (60%) */}
           <div className="md:col-span-3">
             <SpotlightCard className="h-full">
-              <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1826]/80 via-[#171926]/70 to-[#0F0F1E]/60 backdrop-blur-md border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-all h-full cursor-pointer">
+              <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1826] via-[#171926] to-[#0F0F1E] border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-colors h-full">
                 <div className="aspect-[3/4] bg-[#1E2133] relative overflow-hidden">
                   <Image
                     src={featured.image}
@@ -39,14 +39,12 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
                     fill
                     className="object-cover transform group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
-                    quality={80}
-                    sizes="(max-width: 768px) 100vw, 60vw"
+                    quality={75}
+                    sizes="(max-width: 768px) calc(100vw - 3rem), 660px"
                   />
-                  {/* Overlay gradient - visible on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/95 via-transparent to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Content - shown on hover */}
-                  <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     <h4 className="font-semibold text-white text-lg mb-2">{featured.title}</h4>
                     <p className="text-sm text-[#C9D3EE] mb-3">{featured.description}</p>
                     <span className="inline-flex w-fit px-3 py-1 bg-[#6366F1]/20 text-[#818CF8] text-xs font-medium rounded-full border border-[#6366F1]/40">
@@ -62,7 +60,7 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
           <div className="md:col-span-2 flex flex-col gap-6">
             {thumbnails.map((art) => (
               <SpotlightCard key={art.id} className="flex-1">
-                <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1826]/70 via-[#171926]/60 to-[#0F0F1E]/50 backdrop-blur-md border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-all h-full cursor-pointer">
+                <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1826] via-[#171926] to-[#0F0F1E] border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-colors h-full">
                   <div className="aspect-[4/3] bg-[#1E2133] relative overflow-hidden">
                     <Image
                       src={art.image}
@@ -71,13 +69,11 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
                       className="object-cover transform group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                       quality={75}
-                      sizes="(max-width: 768px) 100vw, 40vw"
+                      sizes="(max-width: 768px) calc(100vw - 3rem), 440px"
                     />
-                    {/* Overlay gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#000000] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/95 via-transparent to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Content - shown on hover */}
-                    <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                       <h4 className="font-semibold text-white text-sm mb-1">{art.title}</h4>
                       <span className="inline-flex w-fit px-2 py-0.5 bg-[#6366F1]/20 text-[#818CF8] text-xs font-medium rounded-full border border-[#6366F1]/40">
                         {art.category}

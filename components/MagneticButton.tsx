@@ -1,7 +1,7 @@
 'use client';
 
-import { useRef, useState, ReactNode } from 'react';
-import { motion } from 'motion/react';
+import { useRef, ReactNode } from 'react';
+import { motion, useMotionValue, useSpring } from 'motion/react';
 import Link from 'next/link';
 
 interface MagneticButtonProps {
@@ -22,7 +22,10 @@ export default function MagneticButton({
   external = false,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -35,14 +38,13 @@ export default function MagneticButton({
     const distanceY = e.clientY - centerY;
 
     // Apply magnetic pull with strength multiplier
-    setPosition({
-      x: distanceX * strength,
-      y: distanceY * strength,
-    });
+    x.set(distanceX * strength);
+    y.set(distanceY * strength);
   };
 
   const handleMouseLeave = () => {
-    setPosition({ x: 0, y: 0 });
+    x.set(0);
+    y.set(0);
   };
 
   const content = (
@@ -51,13 +53,7 @@ export default function MagneticButton({
       className={`inline-block cursor-pointer ${className}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{
-        type: 'spring',
-        stiffness: 150,
-        damping: 15,
-        mass: 0.1,
-      }}
+      style={{ x: springX, y: springY }}
     >
       {children}
     </motion.div>

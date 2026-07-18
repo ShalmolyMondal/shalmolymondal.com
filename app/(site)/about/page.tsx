@@ -1,12 +1,8 @@
 import Image from 'next/image';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import FlowingGradient from '@/components/FlowingGradient';
 import { getPersonalInfo, getSiteContent } from '@/lib/data';
 import type { AboutSmallThing } from '@/lib/data';
 import { BookOpen, Headphones, Heart } from 'lucide-react';
-
-export const dynamic = 'force-dynamic';
 
 function SmallThingIcon({ icon }: { icon: AboutSmallThing['icon'] }) {
     if (icon === 'mandala') {
@@ -68,7 +64,6 @@ export default function AboutPage() {
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white relative overflow-hidden">
             <FlowingGradient blobCount={2} animated={false} />
-            <Navigation />
 
             <main className="pt-24 pb-20">
                 <div className="max-w-3xl mx-auto px-6">
@@ -178,7 +173,6 @@ export default function AboutPage() {
                 </div>
             </main>
 
-            <Footer />
         </div>
     );
 }

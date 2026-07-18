@@ -14,11 +14,16 @@ export default function ShootingStarsBackground() {
 
         let width = window.innerWidth;
         let height = window.innerHeight;
-        let animationFrameId: number;
+        let isMobile = width < 768;
+        let animationFrameId = 0;
+        let isInViewport = true;
+        const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let prefersReducedMotion = motionQuery.matches;
+        let backgroundGradient: CanvasGradient | null = null;
 
         // Configuration
-        const starCount = 150;
-        const shootingStarProbability = 0.015; // Chance per frame
+        let starCount = isMobile ? 40 : 90;
+        let shootingStarProbability = isMobile ? 0.005 : 0.012; // Chance per frame
 
         interface Star {
             x: number;
@@ -87,25 +92,47 @@ export default function ShootingStarsBackground() {
         const resize = () => {
             width = window.innerWidth;
             height = window.innerHeight;
-            const dpr = window.devicePixelRatio || 1;
+            isMobile = width < 768;
+            starCount = isMobile ? 40 : 90;
+            shootingStarProbability = isMobile ? 0.005 : 0.012;
+            const dpr = Math.min(window.devicePixelRatio || 1, isMobile ? 1.25 : 1.5);
             canvas.width = width * dpr;
             canvas.height = height * dpr;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.scale(dpr, dpr);
             canvas.style.width = `${width}px`;
             canvas.style.height = `${height}px`;
+            backgroundGradient = ctx.createRadialGradient(
+                width / 2,
+                height * 1.2,
+                0,
+                width / 2,
+                height * 1.2,
+                width * 0.8,
+            );
+            backgroundGradient.addColorStop(0, 'rgba(99, 102, 241, 0.05)');
+            backgroundGradient.addColorStop(1, 'transparent');
             initStars();
         };
 
         let time = 0;
-        const animate = () => {
+        let lastFrameTime = 0;
+        const animate = (frameTime = 0) => {
+            animationFrameId = 0;
+            if (!isInViewport || document.hidden || prefersReducedMotion) return;
+
+            const frameInterval = isMobile ? 33 : 20;
+            if (frameTime - lastFrameTime < frameInterval) {
+                animationFrameId = requestAnimationFrame(animate);
+                return;
+            }
+
+            lastFrameTime = frameTime;
             time++;
             ctx.clearRect(0, 0, width, height);
 
             // Subtle gradient glow at the bottom
-            const gradient = ctx.createRadialGradient(width / 2, height * 1.2, 0, width / 2, height * 1.2, width * 0.8);
-            gradient.addColorStop(0, 'rgba(99, 102, 241, 0.05)'); // Reduced Indigo glow
-            gradient.addColorStop(1, 'transparent');
-            ctx.fillStyle = gradient;
+            ctx.fillStyle = backgroundGradient ?? 'transparent';
             ctx.fillRect(0, 0, width, height);
 
             // Draw Static Stars
@@ -168,23 +195,44 @@ export default function ShootingStarsBackground() {
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        const handleVisibility = () => {
-            if (document.hidden) {
-                cancelAnimationFrame(animationFrameId);
-            } else {
+        const startAnimation = () => {
+            if (!animationFrameId && isInViewport && !document.hidden && !prefersReducedMotion) {
                 animationFrameId = requestAnimationFrame(animate);
             }
         };
 
+        const stopAnimation = () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = 0;
+            }
+        };
+
+        const handleVisibility = () => document.hidden ? stopAnimation() : startAnimation();
+        const handleMotionPreference = () => {
+            prefersReducedMotion = motionQuery.matches;
+            if (prefersReducedMotion) stopAnimation();
+            else startAnimation();
+        };
+        const observer = new IntersectionObserver(([entry]) => {
+            isInViewport = entry.isIntersecting;
+            if (isInViewport) startAnimation();
+            else stopAnimation();
+        }, { rootMargin: '100px 0px' });
+
         window.addEventListener('resize', resize, { passive: true });
         document.addEventListener('visibilitychange', handleVisibility);
+        motionQuery.addEventListener('change', handleMotionPreference);
+        observer.observe(canvas);
         resize();
-        animate();
+        startAnimation();
 
         return () => {
             window.removeEventListener('resize', resize);
             document.removeEventListener('visibilitychange', handleVisibility);
-            cancelAnimationFrame(animationFrameId);
+            motionQuery.removeEventListener('change', handleMotionPreference);
+            observer.disconnect();
+            stopAnimation();
         };
     }, []);
 

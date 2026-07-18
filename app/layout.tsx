@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import FullPageLoader from "@/components/FullPageLoader";
 import { getSiteContent } from "@/lib/data";
 
 const inter = Inter({
@@ -24,12 +23,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const site = getSiteContent();
-
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} font-[family-name:var(--font-inter)] antialiased`}>
-        <FullPageLoader name={site.loaderText}>{children}</FullPageLoader>
+        {children}
       </body>
     </html>
   );

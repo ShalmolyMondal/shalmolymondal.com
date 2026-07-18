@@ -35,7 +35,7 @@ export function CurrentFocusSection({ content }: CurrentFocusSectionProps) {
 
             return (
               <FadeIn key={index} direction="left" delay={0.4 + index * 0.1}>
-                <div className={`flex items-center gap-4 p-5 rounded-xl border border-[#727DA1]/25 border-l-4 ${borderColor} ${bgGradient} backdrop-blur-sm transition-all hover:border-[#727DA1]/50 hover:bg-white/5`}>
+                <div className={`flex items-center gap-4 p-5 rounded-xl border border-[#727DA1]/25 border-l-4 ${borderColor} ${bgGradient} transition-colors hover:border-[#727DA1]/50 hover:bg-white/5`}>
                   <div className={`flex-shrink-0 w-11 h-11 rounded-lg ${iconBg} flex items-center justify-center border border-white/10`}>
                     {isDataEngineer ? (
                       <Database className={`w-5 h-5 ${iconColor}`} />

@@ -1,5 +1,3 @@
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import { PageBackground } from '@/components/layout/PageBackground';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { CurrentFocusSection } from '@/components/sections/CurrentFocusSection';
@@ -7,8 +5,6 @@ import { CurrentFocusSection } from '@/components/sections/CurrentFocusSection';
 import { ArtGallerySection } from '@/components/sections/ArtGallerySection';
 import { BlogSection } from '@/components/sections/BlogSection';
 import { getPersonalInfo, getBlogs, getArt, getSiteContent } from '@/lib/data';
-
-export const dynamic = 'force-dynamic';
 
 export default function Home() {
   const personal = getPersonalInfo();
@@ -18,7 +14,6 @@ export default function Home() {
 
   return (
     <PageBackground>
-      <Navigation />
       <HeroSection personal={personal} content={site.home.hero} />
 
       {/* Hero to Content Gradient Transition */}
@@ -31,7 +26,6 @@ export default function Home() {
         <BlogSection blogs={blogs} content={site.home.blogSection} labels={site.labels} />
       </div>
 
-      <Footer />
     </PageBackground>
   );
 }

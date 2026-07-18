@@ -1,5 +1,3 @@
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import Card3DTilt from '@/components/Card3DTilt';
 import SpotlightCard from '@/components/SpotlightCard';
 import MagneticButton from '@/components/MagneticButton';
@@ -7,16 +5,13 @@ import FadeIn from '@/components/FadeIn';
 import FlowingGradient from '@/components/FlowingGradient';
 import { getPersonalInfo, getSiteContent } from '@/lib/data';
 
-export const dynamic = 'force-dynamic';
-
 export default function ContactPage() {
     const personal = getPersonalInfo();
     const content = getSiteContent().contactPage;
 
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white flex flex-col relative overflow-hidden">
-            <FlowingGradient />
-            <Navigation />
+            <FlowingGradient blobCount={2} />
 
             <div className="flex-1 flex items-center justify-center py-20">
                 <div className="max-w-2xl w-full mx-auto px-6">
@@ -135,7 +130,6 @@ export default function ContactPage() {
                 </div>
             </div>
 
-            <Footer />
         </div>
     );
 }

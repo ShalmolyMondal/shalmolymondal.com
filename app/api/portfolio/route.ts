@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
-import { ADMIN_PASSWORD, getPortfolioData, savePortfolioData } from '@/lib/data';
+import { ADMIN_PASSWORD, readPortfolioData, savePortfolioData } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';
@@ -136,7 +136,7 @@ function isValidPassword(password: unknown) {
 
 export async function GET() {
     try {
-        const data = getPortfolioData();
+        const data = readPortfolioData();
         return NextResponse.json(data, {
             headers: {
                 'Cache-Control': 'no-store, max-age=0',

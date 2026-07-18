@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 
 const initialData = [
     { group: 'Code and Logic', value: 0.9, tools: 'Python, SQL, Matlab, React' },
@@ -66,44 +66,27 @@ export default function SkillRadar() {
         };
     }, []);
 
-    // Use document-level listeners for reliable drag
-    useEffect(() => {
-        function onMove(e: PointerEvent) {
-            const idx = dragIndexRef.current;
-            if (idx === null) return;
-            e.preventDefault();
-            const pt = getSvgCoords(e.clientX, e.clientY);
-            if (!pt) return;
-            const dx = pt.x - CX;
-            const dy = pt.y - CY;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const newValue = Math.max(0.15, Math.min(1, dist / R));
-            setRadarData(prev => {
-                const next = [...prev];
-                next[idx] = { ...next[idx], value: newValue };
-                return next;
-            });
-        }
-
-        function onUp() {
-            if (dragIndexRef.current !== null) {
-                dragIndexRef.current = null;
-                setDragIndex(null);
-            }
-        }
-
-        document.addEventListener('pointermove', onMove, { passive: false });
-        document.addEventListener('pointerup', onUp);
-        document.addEventListener('pointercancel', onUp);
-
-        return () => {
-            document.removeEventListener('pointermove', onMove);
-            document.removeEventListener('pointerup', onUp);
-            document.removeEventListener('pointercancel', onUp);
-        };
+    const handlePointerMove = useCallback((e: React.PointerEvent<SVGSVGElement>) => {
+        const idx = dragIndexRef.current;
+        if (idx === null) return;
+        e.preventDefault();
+        const pt = getSvgCoords(e.clientX, e.clientY);
+        if (!pt) return;
+        const dx = pt.x - CX;
+        const dy = pt.y - CY;
+        const newValue = Math.max(0.15, Math.min(1, Math.hypot(dx, dy) / R));
+        setRadarData((previous) => previous.map((item, itemIndex) => (
+            itemIndex === idx ? { ...item, value: newValue } : item
+        )));
     }, [getSvgCoords]);
 
-    const startDrag = useCallback((i: number) => {
+    const endDrag = useCallback(() => {
+        dragIndexRef.current = null;
+        setDragIndex(null);
+    }, []);
+
+    const startDrag = useCallback((i: number, e: React.PointerEvent<SVGCircleElement>) => {
+        e.currentTarget.setPointerCapture(e.pointerId);
         dragIndexRef.current = i;
         setDragIndex(i);
         setActiveIndex(i);
@@ -123,9 +106,12 @@ export default function SkillRadar() {
             <svg
                 ref={svgRef}
                 viewBox="0 0 440 356"
-                className="w-full select-none touch-none"
+                className="w-full select-none touch-pan-y"
                 role="img"
                 aria-label="Interactive skill radar. Drag vertices to adjust."
+                onPointerMove={handlePointerMove}
+                onPointerUp={endDrag}
+                onPointerCancel={endDrag}
             >
                 {/* Grid levels */}
                 {Array.from({ length: LEVELS }, (_, l) => {
@@ -186,7 +172,7 @@ export default function SkillRadar() {
                                 r={18}
                                 fill="transparent"
                                 style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-                                onPointerDown={(e) => { e.preventDefault(); startDrag(i); }}
+                                onPointerDown={(e) => { e.preventDefault(); startDrag(i, e); }}
                                 onPointerEnter={() => { if (dragIndexRef.current === null) setActiveIndex(i); }}
                                 onPointerLeave={() => { if (dragIndexRef.current === null) setActiveIndex(null); }}
                             />

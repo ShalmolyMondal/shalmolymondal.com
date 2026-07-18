@@ -1,15 +1,8 @@
-"use client";
 import React from "react";
-import { motion } from "motion/react";
 
 export const CodeWindow = () => {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative w-full max-w-lg mx-auto lg:mr-0"
-        >
+        <div className="animate-code-window-in relative w-full max-w-lg mx-auto lg:mr-0">
             <div className="relative rounded-xl bg-[#1e1e2e]/80 backdrop-blur-xl border border-white/10 shadow-2xl overflow-hidden">
                 {/* Window Header */}
                 <div className="flex items-center justify-between px-4 py-3 bg-white/5 border-b border-white/5">
@@ -54,16 +47,8 @@ export const CodeWindow = () => {
             </div>
 
             {/* Decorative Elements */}
-            <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -right-6 -bottom-6 w-24 h-24 bg-purple-600/20 rounded-full blur-2xl"
-            />
-            <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -left-6 -top-6 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl"
-            />
-        </motion.div>
+            <div className="animate-float-up absolute -right-6 -bottom-6 w-24 h-24 bg-purple-600/20 rounded-full blur-2xl" />
+            <div className="animate-float-down absolute -left-6 -top-6 w-32 h-32 bg-blue-600/20 rounded-full blur-2xl" />
+        </div>
     );
 };

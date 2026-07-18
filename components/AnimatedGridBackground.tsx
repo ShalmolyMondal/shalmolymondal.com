@@ -1,7 +1,4 @@
-'use client';
-
-import { motion } from 'motion/react';
-import { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 interface AnimatedGridBackgroundProps {
   children: ReactNode;
@@ -20,36 +17,15 @@ export default function AnimatedGridBackground({
 }: AnimatedGridBackgroundProps) {
   return (
     <div className={`relative ${className}`}>
-      {/* Animated dot grid pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg className="w-full h-full">
-          <defs>
-            <pattern
-              id="dot-grid"
-              x="0"
-              y="0"
-              width={gridSize}
-              height={gridSize}
-              patternUnits="userSpaceOnUse"
-            >
-              <motion.circle
-                cx={gridSize / 2}
-                cy={gridSize / 2}
-                r={dotSize}
-                fill={dotColor}
-                initial={{ opacity: 0.3 }}
-                animate={{ opacity: [0.3, 0.6, 0.3] }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dot-grid)" />
-        </svg>
-      </div>
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, ${dotColor} ${dotSize}px, transparent ${dotSize + 0.5}px)`,
+          backgroundSize: `${gridSize}px ${gridSize}px`,
+          backgroundPosition: `${gridSize / 2}px ${gridSize / 2}px`,
+        } as CSSProperties}
+      />
 
       {/* Content */}
       <div className="relative z-10">{children}</div>

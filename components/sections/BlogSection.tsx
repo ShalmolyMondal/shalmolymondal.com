@@ -43,7 +43,7 @@ export function BlogSection({ blogs, content, labels }: BlogSectionProps) {
                       className="object-cover transform group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                       quality={75}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 768px) calc(100vw - 3rem), 560px"
                     />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-neutral-900 to-neutral-800" />

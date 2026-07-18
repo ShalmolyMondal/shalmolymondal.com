@@ -1,9 +1,5 @@
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import Image from 'next/image';
 import { getArt, getSiteContent } from '@/lib/data';
-
-export const dynamic = 'force-dynamic';
 
 export default function ArtPage() {
     const artPieces = getArt();
@@ -11,7 +7,6 @@ export default function ArtPage() {
 
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white">
-            <Navigation />
 
             <main className="pt-24 pb-20">
                 <div className="max-w-7xl mx-auto px-6">
@@ -38,8 +33,8 @@ export default function ArtPage() {
                                         fill
                                         className="object-cover"
                                         loading="lazy"
-                                        quality={85}
-                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        quality={75}
+                                        sizes="(max-width: 768px) calc(100vw - 3rem), (max-width: 1200px) 50vw, 410px"
                                     />
                                 </div>
 
@@ -58,7 +53,6 @@ export default function ArtPage() {
                 </div>
             </main>
 
-            <Footer />
         </div>
     );
 }

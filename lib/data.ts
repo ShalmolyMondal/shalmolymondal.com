@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { unstable_noStore as noStore } from 'next/cache';
+import { cache } from 'react';
 
 const dataFilePath = path.join(process.cwd(), 'data', 'portfolio.json');
 
@@ -434,11 +434,12 @@ function normalizePortfolioData(data: PortfolioData | (Omit<PortfolioData, 'site
     };
 }
 
-export function getPortfolioData(): PortfolioData {
-    noStore();
+export function readPortfolioData(): PortfolioData {
     const fileContents = fs.readFileSync(dataFilePath, 'utf8');
     return normalizePortfolioData(JSON.parse(fileContents));
 }
+
+export const getPortfolioData = cache(readPortfolioData);
 
 // Write portfolio data
 export function savePortfolioData(data: PortfolioData): void {

@@ -1,11 +1,7 @@
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import AnimatedGridBackground from '@/components/AnimatedGridBackground';
 import FadeIn from '@/components/FadeIn';
 import FlowingGradient from '@/components/FlowingGradient';
 import { getBlogs, getSiteContent } from '@/lib/data';
-
-export const dynamic = 'force-dynamic';
 
 export default function BlogPage() {
     const blogs = getBlogs();
@@ -14,8 +10,7 @@ export default function BlogPage() {
 
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white relative overflow-hidden">
-            <FlowingGradient />
-            <Navigation />
+            <FlowingGradient blobCount={2} />
 
             <AnimatedGridBackground className="pt-20 pb-16">
                 <div className="max-w-7xl mx-auto px-6">
@@ -46,7 +41,7 @@ export default function BlogPage() {
                                             href={blog.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`block h-full bg-gradient-to-br from-[#1A1826]/70 via-[#171926]/60 to-[#0F0F1E]/50 backdrop-blur-md border border-[#6366F1]/20 rounded-xl hover:border-[#6366F1]/40 transition-all group ${
+                                            className={`block h-full bg-gradient-to-br from-[#1A1826] via-[#171926] to-[#0F0F1E] border border-[#6366F1]/20 rounded-xl hover:border-[#6366F1]/40 transition-colors group ${
                                                 index === 0 ? 'p-8 md:p-10' : 'p-6'
                                             }`}
 
@@ -100,7 +95,6 @@ export default function BlogPage() {
                 </div>
             </AnimatedGridBackground>
 
-            <Footer />
         </div>
     );
 }

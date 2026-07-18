@@ -1,6 +1,4 @@
 import Image from 'next/image';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
 import FadeIn from '@/components/FadeIn';
 import SpotlightCard from '@/components/SpotlightCard';
@@ -48,8 +46,6 @@ function InstitutionLogo({ edu }: { edu: Education }) {
     );
 }
 
-export const dynamic = 'force-dynamic';
-
 export default function WorkPage() {
     const projects = getProjects().filter(p => p.featured).slice(0, 3);
     const research = getResearch();
@@ -69,7 +65,6 @@ export default function WorkPage() {
     return (
         <div className="min-h-screen bg-[#0B0C14] text-white relative overflow-hidden">
             <FlowingGradient blobCount={2} animated={false} />
-            <Navigation />
 
             <main className="pt-24 pb-20">
                 <div className="max-w-6xl mx-auto px-6">
@@ -337,7 +332,6 @@ export default function WorkPage() {
                 </div>
             </main>
 
-            <Footer />
         </div>
     );
 }

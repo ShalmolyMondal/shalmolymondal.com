@@ -14,11 +14,20 @@ export default function RotatingBadge({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [charCount, setCharCount] = useState(0);
   const [phase, setPhase] = useState<'typing' | 'visible' | 'deleting'>('typing');
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const TYPE_INTERVAL = 80;
   const currentWord = words[currentIndex] ?? '';
 
   useEffect(() => {
-    if (phase !== 'typing') return;
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const updatePreference = () => setPrefersReducedMotion(motionQuery.matches);
+    updatePreference();
+    motionQuery.addEventListener('change', updatePreference);
+    return () => motionQuery.removeEventListener('change', updatePreference);
+  }, []);
+
+  useEffect(() => {
+    if (phase !== 'typing' || prefersReducedMotion) return;
 
     const timer = window.setInterval(() => {
       setCharCount((prev) => {
@@ -32,18 +41,18 @@ export default function RotatingBadge({
     }, TYPE_INTERVAL);
 
     return () => window.clearInterval(timer);
-  }, [phase, currentWord]);
+  }, [phase, currentWord, prefersReducedMotion]);
 
   // Hold phase
   useEffect(() => {
-    if (phase !== 'visible') return;
+    if (phase !== 'visible' || prefersReducedMotion) return;
     const t = setTimeout(() => setPhase('deleting'), duration);
     return () => clearTimeout(t);
-  }, [phase, duration]);
+  }, [phase, duration, prefersReducedMotion]);
 
   // Delete: clear instantly, advance word
   useEffect(() => {
-    if (phase !== 'deleting') return;
+    if (phase !== 'deleting' || prefersReducedMotion) return;
     const timer = window.setTimeout(() => {
       setCharCount(0);
       setCurrentIndex((prev) => (prev + 1) % words.length);
@@ -51,7 +60,7 @@ export default function RotatingBadge({
     }, 0);
 
     return () => window.clearTimeout(timer);
-  }, [phase, words.length]);
+  }, [phase, words.length, prefersReducedMotion]);
 
   return (
     <div
@@ -76,17 +85,19 @@ export default function RotatingBadge({
           <span
             className="absolute left-0 font-medium tracking-[0.2em] text-[0.96rem] uppercase whitespace-nowrap text-[#818CF8]"
           >
-            {currentWord.slice(0, charCount)}
+            {prefersReducedMotion ? currentWord : currentWord.slice(0, charCount)}
           </span>
           {/* Blinking cursor positioned right after typed text */}
-          <span
-            className="absolute left-0 font-medium tracking-[0.2em] text-[0.96rem] uppercase whitespace-nowrap pointer-events-none"
-            aria-hidden
-            style={{ color: 'transparent' }}
-          >
-            {currentWord.slice(0, charCount)}
-            <span className="inline-block w-[2px] h-4 bg-[#6366F1] align-middle ml-0.5 animate-blink" />
-          </span>
+          {!prefersReducedMotion && (
+            <span
+              className="absolute left-0 font-medium tracking-[0.2em] text-[0.96rem] uppercase whitespace-nowrap pointer-events-none"
+              aria-hidden
+              style={{ color: 'transparent' }}
+            >
+              {currentWord.slice(0, charCount)}
+              <span className="inline-block w-[2px] h-4 bg-[#6366F1] align-middle ml-0.5 animate-blink" />
+            </span>
+          )}
         </div>
       </div>
     </div>
