@@ -13,7 +13,7 @@ export function FeaturedWorkSection({ featuredProjects }: FeaturedWorkSectionPro
       <div className="max-w-6xl mx-auto">
         <div className="mb-12">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">Featured Work</span>
+            <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">Featured Work</span>
           </h2>
         </div>
 
@@ -27,7 +27,7 @@ export function FeaturedWorkSection({ featuredProjects }: FeaturedWorkSectionPro
         </div>
 
         <div className="mt-10 ml-1">
-          <Link href="/work" className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-[#818CF8] font-medium transition-colors">
+          <Link href="/work" className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-(--s-accent-2) font-medium transition-colors">
             View All Projects
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

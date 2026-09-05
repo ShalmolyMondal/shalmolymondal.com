@@ -12,7 +12,7 @@ interface PageBackgroundProps {
  */
 export function PageBackground({ children }: PageBackgroundProps) {
   return (
-    <div className="min-h-screen bg-[#0B0C14] text-[#C9D3EE] relative w-full overflow-x-hidden">
+    <div className="min-h-screen bg-(--s-bg) text-(--s-text-2) relative w-full overflow-x-hidden">
       {children}
     </div>
   );

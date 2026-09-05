@@ -19,9 +19,9 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
-            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.title}</span>
+            <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.title}</span>
           </h2>
-          <p className="text-[#C9D3EE] text-base leading-relaxed max-w-2xl">
+          <p className="text-(--s-text-2) text-base leading-relaxed max-w-2xl">
             {content.description}
           </p>
         </div>
@@ -31,8 +31,8 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
           {/* Featured - Left column (60%) */}
           <div className="md:col-span-3">
             <SpotlightCard className="h-full">
-              <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1826] via-[#171926] to-[#0F0F1E] border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-colors h-full">
-                <div className="aspect-[3/4] bg-[#1E2133] relative overflow-hidden">
+              <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-(color:--s-deep) via-(color:--s-card) to-(color:--s-deep) border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-colors h-full">
+                <div className="aspect-[3/4] bg-(--s-surface) relative overflow-hidden">
                   <Image
                     src={featured.image}
                     alt={featured.title}
@@ -47,7 +47,7 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
                   <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                     <h4 className="font-semibold text-white text-lg mb-2">{featured.title}</h4>
                     <p className="text-sm text-[#C9D3EE] mb-3">{featured.description}</p>
-                    <span className="inline-flex w-fit px-3 py-1 bg-[#6366F1]/20 text-[#818CF8] text-xs font-medium rounded-full border border-[#6366F1]/40">
+                    <span className="inline-flex w-fit px-3 py-1 bg-[#6366F1]/20 text-(--s-accent-2) text-xs font-medium rounded-full border border-[#6366F1]/40">
                       {featured.category}
                     </span>
                   </div>
@@ -60,8 +60,8 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
           <div className="md:col-span-2 flex flex-col gap-6">
             {thumbnails.map((art) => (
               <SpotlightCard key={art.id} className="flex-1">
-                <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-[#1A1826] via-[#171926] to-[#0F0F1E] border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-colors h-full">
-                  <div className="aspect-[4/3] bg-[#1E2133] relative overflow-hidden">
+                <div className="group overflow-hidden rounded-xl bg-gradient-to-br from-(color:--s-deep) via-(color:--s-card) to-(color:--s-deep) border border-[#6366F1]/20 hover:border-[#6366F1]/40 transition-colors h-full">
+                  <div className="aspect-[4/3] md:aspect-auto md:h-full bg-(--s-surface) relative overflow-hidden">
                     <Image
                       src={art.image}
                       alt={art.title}
@@ -75,7 +75,7 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
 
                     <div className="absolute inset-0 flex flex-col justify-end p-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                       <h4 className="font-semibold text-white text-sm mb-1">{art.title}</h4>
-                      <span className="inline-flex w-fit px-2 py-0.5 bg-[#6366F1]/20 text-[#818CF8] text-xs font-medium rounded-full border border-[#6366F1]/40">
+                      <span className="inline-flex w-fit px-2 py-0.5 bg-[#6366F1]/20 text-(--s-accent-2) text-xs font-medium rounded-full border border-[#6366F1]/40">
                         {art.category}
                       </span>
                     </div>
@@ -87,7 +87,7 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
         </div>
 
         <div className="mt-8">
-          <Link href={content.ctaHref ?? '/art'} className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-[#818CF8] font-medium transition-colors">
+          <Link href={content.ctaHref ?? '/art'} className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-(--s-accent-2) font-medium transition-colors">
             {content.ctaLabel ?? 'View All Art'}
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>

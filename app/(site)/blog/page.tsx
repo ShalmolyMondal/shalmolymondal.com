@@ -9,7 +9,7 @@ export default function BlogPage() {
     const content = site.blogPage;
 
     return (
-        <div className="min-h-screen bg-[#0B0C14] text-white relative overflow-hidden">
+        <div className="min-h-screen bg-(--s-bg) text-(--s-fg) relative overflow-hidden">
             <FlowingGradient blobCount={2} />
 
             <AnimatedGridBackground className="pt-20 pb-16">
@@ -17,12 +17,12 @@ export default function BlogPage() {
                     {/* Header - Improved Typography */}
                     <FadeIn direction="up">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#6366F1]/25 bg-[#6366F1]/5 text-xs text-[#818CF8] tracking-wider uppercase font-medium mb-4">
+                            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#6366F1]/25 bg-[#6366F1]/5 text-xs text-(--s-accent-2) tracking-wider uppercase font-medium mb-4">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#6366F1] animate-pulse"></span>
                                 {content.eyebrow}
                             </div>
-                            <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
-                            <p className="text-base text-[#939DB8] max-w-2xl mx-auto leading-relaxed">
+                            <h1 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"><span className="bg-gradient-to-r from-(color:--s-fg) via-(color:--s-text-2) to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
+                            <p className="text-base text-(--s-muted) max-w-2xl mx-auto leading-relaxed">
                                 {content.description}
                             </p>
                         </div>
@@ -41,39 +41,39 @@ export default function BlogPage() {
                                             href={blog.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className={`block h-full bg-gradient-to-br from-[#1A1826] via-[#171926] to-[#0F0F1E] border border-[#6366F1]/20 rounded-xl hover:border-[#6366F1]/40 transition-colors group ${
+                                            className={`block h-full bg-gradient-to-br from-(color:--s-deep) via-(color:--s-card) to-(color:--s-deep) border border-[#6366F1]/20 rounded-xl hover:border-[#6366F1]/40 transition-colors group ${
                                                 index === 0 ? 'p-8 md:p-10' : 'p-6'
                                             }`}
 
                                         >
                                                 {/* Badges */}
                                                 <div className="flex items-center gap-2 mb-3 flex-wrap">
-                                                    <span className="px-2.5 py-1 bg-[#6366F1]/15 text-[#818CF8] text-xs font-medium rounded-full border border-[#6366F1]/20">
+                                                    <span className="px-2.5 py-1 bg-[#6366F1]/15 text-(--s-accent-2) text-xs font-medium rounded-full border border-[#6366F1]/20">
                                                         {blog.category}
                                                     </span>
                                                     {blog.featured && (
-                                                        <span className="px-2.5 py-1 bg-[#4F46E5]/15 text-[#A5B4FC] text-xs font-medium rounded-full border border-[#4F46E5]/20">
+                                                        <span className="px-2.5 py-1 bg-[#4F46E5]/15 text-(--s-accent-3) text-xs font-medium rounded-full border border-[#4F46E5]/20">
                                                             {site.labels.featured}
                                                         </span>
                                                     )}
                                                 </div>
 
                                                 {/* Title */}
-                                                <h2 className={`font-bold mb-3 group-hover:text-[#E0E7FF] transition-colors leading-tight ${
+                                                <h2 className={`font-bold mb-3 group-hover:text-(--s-accent-5) transition-colors leading-tight ${
                                                     index === 0 ? 'text-2xl md:text-4xl' : 'text-lg md:text-xl'
                                                 }`}>
                                                     {blog.title}
                                                 </h2>
 
                                                 {/* Excerpt */}
-                                                <p className={`text-[#C9D3EE] leading-relaxed mb-4 ${
+                                                <p className={`text-(--s-text-2) leading-relaxed mb-4 ${
                                                     index === 0 ? 'text-base md:text-lg line-clamp-3' : 'text-sm line-clamp-2'
                                                 }`}>
                                                     {blog.excerpt}
                                                 </p>
 
                                                 {/* Meta Info */}
-                                                <div className="flex items-center gap-3 text-xs text-[#939DB8]/70 mt-auto pt-3 border-t border-[#727DA1]/10">
+                                                <div className="flex items-center gap-3 text-xs text-(--s-muted)/70 mt-auto pt-3 border-t border-(color:--s-line)/10">
                                                     <span>{blog.date}</span>
                                                     <span>•</span>
                                                     <span>{blog.readTime}</span>

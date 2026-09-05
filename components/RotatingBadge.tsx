@@ -83,7 +83,7 @@ export default function RotatingBadge({
           </span>
           {/* Visible typed text overlaid at same position */}
           <span
-            className="absolute left-0 font-medium tracking-[0.2em] text-[0.96rem] uppercase whitespace-nowrap text-[#818CF8]"
+            className="absolute left-0 font-medium tracking-[0.2em] text-[0.96rem] uppercase whitespace-nowrap text-(--s-accent-2)"
           >
             {prefersReducedMotion ? currentWord : currentWord.slice(0, charCount)}
           </span>

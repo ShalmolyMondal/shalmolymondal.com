@@ -45,19 +45,19 @@ export default function NewsletterSignup() {
                     placeholder="Email address"
                     autoComplete="email"
                     required
-                    className="min-w-0 flex-1 rounded-lg border border-[#727DA1]/20 bg-[#171926]/70 px-3 py-2.5 text-sm text-white placeholder:text-[#727DA1] outline-none transition-colors focus:border-[#818CF8]"
+                    className="min-w-0 flex-1 rounded-lg border border-(color:--s-line)/20 bg-(--s-card)/70 px-3 py-2.5 text-sm text-(--s-fg) placeholder:text-(--s-line) outline-none transition-colors focus:border-(color:--s-accent-2)"
                 />
                 <button
                     type="submit"
                     disabled={state === 'loading'}
-                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#6366F1] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#818CF8] disabled:cursor-not-allowed disabled:opacity-70"
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#6366F1] px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-(--s-accent-2) disabled:cursor-not-allowed disabled:opacity-70"
                 >
                     <Send className="h-4 w-4" />
                     {state === 'loading' ? 'Joining' : 'Join'}
                 </button>
             </div>
             {message && (
-                <p className={`text-xs leading-relaxed ${state === 'error' ? 'text-red-300' : 'text-[#A5B4FC]'}`}>
+                <p className={`text-xs leading-relaxed ${state === 'error' ? 'text-red-300' : 'text-(--s-accent-3)'}`}>
                     {message}
                 </p>
             )}

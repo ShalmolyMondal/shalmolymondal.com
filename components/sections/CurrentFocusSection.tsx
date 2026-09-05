@@ -14,12 +14,12 @@ export function CurrentFocusSection({ content }: CurrentFocusSectionProps) {
         {/* Header Section */}
         <FadeIn direction="up" delay={0.1}>
           <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
-            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.title}</span>
+            <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.title}</span>
           </h2>
         </FadeIn>
 
         <FadeIn direction="up" delay={0.3}>
-          <p className="text-[#C9D3EE] text-base leading-relaxed mb-8 max-w-2xl">
+          <p className="text-(--s-text-2) text-base leading-relaxed mb-8 max-w-2xl">
             {content.description}
           </p>
         </FadeIn>
@@ -35,15 +35,15 @@ export function CurrentFocusSection({ content }: CurrentFocusSectionProps) {
 
             return (
               <FadeIn key={index} direction="left" delay={0.4 + index * 0.1}>
-                <div className={`flex items-center gap-4 p-5 rounded-xl border border-[#727DA1]/25 border-l-4 ${borderColor} ${bgGradient} transition-colors hover:border-[#727DA1]/50 hover:bg-white/5`}>
-                  <div className={`flex-shrink-0 w-11 h-11 rounded-lg ${iconBg} flex items-center justify-center border border-white/10`}>
+                <div className={`flex items-center gap-4 p-5 rounded-xl border border-(color:--s-line)/25 border-l-4 ${borderColor} ${bgGradient} transition-colors hover:border-(color:--s-line)/50 hover:bg-(--s-fg)/5`}>
+                  <div className={`flex-shrink-0 w-11 h-11 rounded-lg ${iconBg} flex items-center justify-center border border-(color:--s-fg)/10`}>
                     {isDataEngineer ? (
                       <Database className={`w-5 h-5 ${iconColor}`} />
                     ) : (
                       <Palette className={`w-5 h-5 ${iconColor}`} />
                     )}
                   </div>
-                  <p className="text-[#E0E7FF] text-base font-medium flex-1">{item.title}</p>
+                  <p className="text-(--s-accent-5) text-base font-medium flex-1">{item.title}</p>
                 </div>
               </FadeIn>
             );

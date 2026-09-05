@@ -132,6 +132,7 @@ export default function ShootingStarsBackground() {
             ctx.clearRect(0, 0, width, height);
 
             // Subtle gradient glow at the bottom
+            const starRgb = document.documentElement.classList.contains('light') ? '59, 65, 96' : '255, 255, 255';
             ctx.fillStyle = backgroundGradient ?? 'transparent';
             ctx.fillRect(0, 0, width, height);
 
@@ -143,7 +144,7 @@ export default function ShootingStarsBackground() {
 
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0.1, Math.min(1, currentOpacity))})`;
+                ctx.fillStyle = `rgba(${starRgb}, ${Math.max(0.1, Math.min(1, currentOpacity))})`;
                 ctx.fill();
             });
 
@@ -164,7 +165,7 @@ export default function ShootingStarsBackground() {
                     star.x - Math.cos(star.angle) * star.length,
                     star.y - Math.sin(star.angle) * star.length
                 );
-                gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`); // Head
+                gradient.addColorStop(0, `rgba(${starRgb}, ${star.opacity})`); // Head
                 gradient.addColorStop(0.5, `rgba(99, 102, 241, ${star.opacity * 0.5})`); // Tail mid (Indigo)
                 gradient.addColorStop(1, 'transparent'); // Tail end
 
@@ -179,7 +180,7 @@ export default function ShootingStarsBackground() {
                 // Optional: Draw head glow
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, 1.5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+                ctx.fillStyle = `rgba(${starRgb}, ${star.opacity})`;
                 ctx.fill();
 
                 if (star.opacity <= 0 || star.x > width + 100 || star.y > height + 100) {

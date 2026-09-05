@@ -20,9 +20,9 @@ export function BlogSection({ blogs, content, labels }: BlogSectionProps) {
       <div className="max-w-6xl mx-auto">
         <div className="mb-8">
           <h2 className="text-3xl md:text-4xl font-bold mb-2 leading-tight">
-            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.title}</span>
+            <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.title}</span>
           </h2>
-          <p className="text-[#C9D3EE] text-base leading-relaxed max-w-2xl">
+          <p className="text-(--s-text-2) text-base leading-relaxed max-w-2xl">
             {content.description}
           </p>
         </div>
@@ -34,7 +34,7 @@ export function BlogSection({ blogs, content, labels }: BlogSectionProps) {
               title={blog.title}
               description={blog.excerpt}
               header={
-                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden border border-white/10 relative group">
+                <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl overflow-hidden border border-(color:--s-fg)/10 relative group">
                   {blog.image ? (
                     <Image
                       src={blog.image}
@@ -58,7 +58,7 @@ export function BlogSection({ blogs, content, labels }: BlogSectionProps) {
                   )}
                 </div>
               }
-              icon={<BookOpen className="h-4 w-4 text-[#818CF8]" />}
+              icon={<BookOpen className="h-4 w-4 text-(--s-accent-2)" />}
               className={i === 2 || i === 3 || i === 6 ? "md:col-span-2" : ""}
               url={blog.url}
               category={blog.category}
@@ -68,7 +68,7 @@ export function BlogSection({ blogs, content, labels }: BlogSectionProps) {
         </BentoGrid>
 
         <div className="mt-10 text-center">
-          <Link href={content.ctaHref ?? '/blog'} className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-[#818CF8] font-medium transition-colors">
+          <Link href={content.ctaHref ?? '/blog'} className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-(--s-accent-2) font-medium transition-colors">
             {content.ctaLabel ?? 'Read All Articles'}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>

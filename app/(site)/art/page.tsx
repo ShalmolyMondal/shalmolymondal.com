@@ -6,14 +6,14 @@ export default function ArtPage() {
     const content = getSiteContent().artPage;
 
     return (
-        <div className="min-h-screen bg-[#0B0C14] text-white">
+        <div className="min-h-screen bg-(--s-bg) text-(--s-fg)">
 
             <main className="pt-24 pb-20">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Header */}
                     <div className="text-center mb-16">
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
-                        <p className="text-xl text-[#939DB8]">
+                        <h1 className="text-5xl md:text-6xl font-bold mb-6"><span className="bg-gradient-to-r from-(color:--s-fg) via-(color:--s-text-2) to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
+                        <p className="text-xl text-(--s-muted)">
                             {content.description}
                         </p>
                     </div>
@@ -23,10 +23,10 @@ export default function ArtPage() {
                         {artPieces.map((art) => (
                             <div
                                 key={art.id}
-                                className="group relative overflow-hidden rounded-xl bg-[#171926] border border-[#727DA1]/15 hover:border-[#6366F1]/40 transition-all hover:shadow-2xl hover:shadow-[#6366F1]/10"
+                                className="group relative overflow-hidden rounded-xl bg-(--s-card) border border-(color:--s-line)/15 hover:border-[#6366F1]/40 transition-all hover:shadow-2xl hover:shadow-[#6366F1]/10"
                             >
                                 {/* Art Image */}
-                                <div className="aspect-square bg-gradient-to-br from-[#6366F1]/20 via-[#818CF8]/15 to-[#4F46E5]/20 flex items-center justify-center relative overflow-hidden">
+                                <div className="aspect-square bg-gradient-to-br from-[#6366F1]/20 via-(color:--s-accent-2)/15 to-[#4F46E5]/20 flex items-center justify-center relative overflow-hidden">
                                     <Image
                                         src={art.image}
                                         alt={art.title}
@@ -40,12 +40,12 @@ export default function ArtPage() {
 
                                 {/* Art Info */}
                                 <div className="p-6">
-                                    <div className="text-sm text-[#939DB8] mb-2">{art.category}</div>
+                                    <div className="text-sm text-(--s-muted) mb-2">{art.category}</div>
                                     <h3 className="text-xl font-bold mb-2 group-hover:text-[#6366F1] transition-colors">
                                         {art.title}
                                     </h3>
-                                    <p className="text-[#939DB8] text-sm mb-3">{art.description}</p>
-                                    {art.date && <div className="text-xs text-[#939DB8]">{art.date}</div>}
+                                    <p className="text-(--s-muted) text-sm mb-3">{art.description}</p>
+                                    {art.date && <div className="text-xs text-(--s-muted)">{art.date}</div>}
                                 </div>
                             </div>
                         ))}

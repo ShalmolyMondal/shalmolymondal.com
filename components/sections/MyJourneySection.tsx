@@ -26,7 +26,7 @@ function InstitutionLogo({ edu }: { edu: Education }) {
   if (edu.logo) {
     const isSvg = edu.logo.endsWith('.svg');
     return (
-      <div className={`w-20 h-20 rounded-full flex items-center justify-center p-3 ${isSvg ? 'bg-transparent' : 'bg-white/90'}`}>
+      <div className={`w-20 h-20 rounded-full flex items-center justify-center p-3 ${isSvg ? 'bg-transparent' : 'bg-(--s-fg)/90'}`}>
         <Image
           src={edu.logo}
           alt={edu.institution}
@@ -46,7 +46,7 @@ function InstitutionLogo({ edu }: { edu: Education }) {
     .join('');
   return (
     <div className="w-14 h-14 rounded-full bg-[#6366F1]/15 border border-[#6366F1]/25 flex items-center justify-center">
-      <span className="text-sm font-bold text-[#818CF8] tracking-wide">{initials}</span>
+      <span className="text-sm font-bold text-(--s-accent-2) tracking-wide">{initials}</span>
     </div>
   );
 }
@@ -64,12 +64,12 @@ const SkillsTab = memo(function SkillsTab({ skills }: { skills: Skills }) {
     <div className="space-y-5">
       {groups.map((group) => (
         <div key={group.title} className="flex flex-col sm:flex-row sm:items-start gap-3">
-          <h4 className="text-xs font-medium text-[#818CF8] uppercase tracking-wider sm:w-32 shrink-0 pt-1.5">{group.title}</h4>
+          <h4 className="text-xs font-medium text-(--s-accent-2) uppercase tracking-wider sm:w-32 shrink-0 pt-1.5">{group.title}</h4>
           <div className="flex flex-wrap gap-2">
             {group.items.map((skill) => (
               <span
                 key={skill}
-                className="px-3 py-1.5 text-sm text-[#C9D3EE] bg-[#171926] border border-[#727DA1]/20 rounded-lg hover:border-[#6366F1]/40 transition-colors"
+                className="px-3 py-1.5 text-sm text-(--s-text-2) bg-(--s-card) border border-(color:--s-line)/20 rounded-lg hover:border-[#6366F1]/40 transition-colors"
               >
                 {skill}
               </span>
@@ -95,7 +95,7 @@ const ExperienceTab = memo(function ExperienceTab({ experience }: { experience: 
   return (
     <div className="relative">
       {/* Center vertical line — hidden on mobile */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-[#727DA1]/30 -translate-x-1/2" />
+      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-(--s-line)/30 -translate-x-1/2" />
 
       <div className="space-y-12 md:space-y-16">
         {experience.map((exp, i) => {
@@ -109,16 +109,16 @@ const ExperienceTab = memo(function ExperienceTab({ experience }: { experience: 
                 {/* ── Mobile layout (stacked) ── */}
                 <div className="md:hidden flex gap-4 items-start">
                   {/* Icon circle */}
-                  <div className="shrink-0 w-12 h-12 rounded-full border-2 border-[#727DA1]/40 bg-[#0B0C14] flex items-center justify-center z-10">
-                    <Icon className="w-5 h-5 text-[#818CF8]" />
+                  <div className="shrink-0 w-12 h-12 rounded-full border-2 border-(color:--s-line)/40 bg-(--s-bg) flex items-center justify-center z-10">
+                    <Icon className="w-5 h-5 text-(--s-accent-2)" />
                   </div>
                   {/* Card */}
-                  <div className="flex-1 p-5 rounded-xl bg-[#171926] border border-[#727DA1]/15">
-                    <h4 className="text-base font-semibold text-white leading-snug">{exp.role}</h4>
-                    <p className="text-sm text-[#C9D3EE]">{exp.company}</p>
-                    {exp.location && <p className="text-xs text-[#939DB8] mt-0.5">{exp.location}</p>}
-                    <p className="text-xs text-[#818CF8] font-medium mt-1">{exp.period}</p>
-                    <p className="text-sm text-[#939DB8] leading-relaxed mt-3">{exp.description}</p>
+                  <div className="flex-1 p-5 rounded-xl bg-(--s-card) border border-(color:--s-line)/15">
+                    <h4 className="text-base font-semibold text-(--s-fg) leading-snug">{exp.role}</h4>
+                    <p className="text-sm text-(--s-text-2)">{exp.company}</p>
+                    {exp.location && <p className="text-xs text-(--s-muted) mt-0.5">{exp.location}</p>}
+                    <p className="text-xs text-(--s-accent-2) font-medium mt-1">{exp.period}</p>
+                    <p className="text-sm text-(--s-muted) leading-relaxed mt-3">{exp.description}</p>
                   </div>
                 </div>
 
@@ -129,39 +129,39 @@ const ExperienceTab = memo(function ExperienceTab({ experience }: { experience: 
                   <div className={`flex ${isLeft ? 'justify-end' : 'justify-end items-center'}`}>
                     {isLeft ? (
                       /* Card on left */
-                      <div className="relative max-w-md w-full p-5 rounded-xl bg-[#171926] border border-[#727DA1]/15">
-                        <h4 className="text-base font-semibold text-white leading-snug">{exp.role}</h4>
-                        <p className="text-sm text-[#C9D3EE]">{exp.company}</p>
-                        {exp.location && <p className="text-xs text-[#939DB8] mt-0.5">{exp.location}</p>}
-                        <p className="text-sm text-[#939DB8] leading-relaxed mt-3">{exp.description}</p>
+                      <div className="relative max-w-md w-full p-5 rounded-xl bg-(--s-card) border border-(color:--s-line)/15">
+                        <h4 className="text-base font-semibold text-(--s-fg) leading-snug">{exp.role}</h4>
+                        <p className="text-sm text-(--s-text-2)">{exp.company}</p>
+                        {exp.location && <p className="text-xs text-(--s-muted) mt-0.5">{exp.location}</p>}
+                        <p className="text-sm text-(--s-muted) leading-relaxed mt-3">{exp.description}</p>
                         {/* Arrow pointing right */}
-                        <div className="absolute top-5 -right-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-[#727DA1]/15" />
+                        <div className="absolute top-5 -right-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-(color:--s-line)/15" />
                       </div>
                     ) : (
                       /* Date on left */
-                      <span className="text-sm text-[#939DB8] font-medium whitespace-nowrap mt-3">{exp.period}</span>
+                      <span className="text-sm text-(--s-muted) font-medium whitespace-nowrap mt-3">{exp.period}</span>
                     )}
                   </div>
 
                   {/* Center icon */}
-                  <div className="shrink-0 w-12 h-12 rounded-full border-2 border-[#727DA1]/40 bg-[#0B0C14] flex items-center justify-center z-10">
-                    <Icon className="w-5 h-5 text-[#818CF8]" />
+                  <div className="shrink-0 w-12 h-12 rounded-full border-2 border-(color:--s-line)/40 bg-(--s-bg) flex items-center justify-center z-10">
+                    <Icon className="w-5 h-5 text-(--s-accent-2)" />
                   </div>
 
                   {/* Right column */}
                   <div className={`flex ${isLeft ? 'items-center' : 'justify-start'}`}>
                     {isLeft ? (
                       /* Date on right */
-                      <span className="text-sm text-[#939DB8] font-medium whitespace-nowrap mt-3">{exp.period}</span>
+                      <span className="text-sm text-(--s-muted) font-medium whitespace-nowrap mt-3">{exp.period}</span>
                     ) : (
                       /* Card on right */
-                      <div className="relative max-w-md w-full p-5 rounded-xl bg-[#171926] border border-[#727DA1]/15">
-                        <h4 className="text-base font-semibold text-white leading-snug">{exp.role}</h4>
-                        <p className="text-sm text-[#C9D3EE]">{exp.company}</p>
-                        {exp.location && <p className="text-xs text-[#939DB8] mt-0.5">{exp.location}</p>}
-                        <p className="text-sm text-[#939DB8] leading-relaxed mt-3">{exp.description}</p>
+                      <div className="relative max-w-md w-full p-5 rounded-xl bg-(--s-card) border border-(color:--s-line)/15">
+                        <h4 className="text-base font-semibold text-(--s-fg) leading-snug">{exp.role}</h4>
+                        <p className="text-sm text-(--s-text-2)">{exp.company}</p>
+                        {exp.location && <p className="text-xs text-(--s-muted) mt-0.5">{exp.location}</p>}
+                        <p className="text-sm text-(--s-muted) leading-relaxed mt-3">{exp.description}</p>
                         {/* Arrow pointing left */}
-                        <div className="absolute top-5 -left-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[8px] border-r-[#727DA1]/15" />
+                        <div className="absolute top-5 -left-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-[8px] border-r-(color:--s-line)/15" />
                       </div>
                     )}
                   </div>
@@ -180,17 +180,17 @@ const EducationTab = memo(function EducationTab({ education }: { education: Educ
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       {education.map((edu, i) => (
-        <SpotlightCard key={i} className="bg-[#171926] rounded-xl border border-[#727DA1]/15 hover:border-[#6366F1]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#6366F1]/10 hover:scale-102 text-center p-6">
+        <SpotlightCard key={i} className="bg-(--s-card) rounded-xl border border-(color:--s-line)/15 hover:border-[#6366F1]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#6366F1]/10 hover:scale-102 text-center p-6">
           {/* Logo / Initials */}
           <div className="flex justify-center items-center h-24 mb-4">
             <InstitutionLogo edu={edu} />
           </div>
 
           {/* Details */}
-          <h4 className="text-base font-semibold text-white mb-1">{edu.degree}</h4>
-          <p className="text-sm text-[#C9D3EE] mb-0.5">{edu.institution}</p>
-          <p className="text-sm text-[#939DB8] mb-2">{edu.field}</p>
-          <p className="text-xs text-[#818CF8] font-medium">{edu.period}</p>
+          <h4 className="text-base font-semibold text-(--s-fg) mb-1">{edu.degree}</h4>
+          <p className="text-sm text-(--s-text-2) mb-0.5">{edu.institution}</p>
+          <p className="text-sm text-(--s-muted) mb-2">{edu.field}</p>
+          <p className="text-xs text-(--s-accent-2) font-medium">{edu.period}</p>
         </SpotlightCard>
       ))}
     </div>
@@ -203,19 +203,19 @@ export function MyJourneySection({ skills, experience, education }: MyJourneySec
   return (
     <section className="py-20 px-6 relative overflow-hidden">
       {/* Top divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-px bg-gradient-to-r from-transparent via-[#727DA1]/30 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-6xl h-px bg-gradient-to-r from-transparent via-(color:--s-line)/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto">
         {/* Centered header */}
         <FadeIn direction="up" delay={0.1}>
           <div className="text-center mb-10">
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-[#171926] border border-[#727DA1]/20 mb-5">
-              <Trophy className="w-7 h-7 text-[#818CF8]" />
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-(--s-card) border border-(color:--s-line)/20 mb-5">
+              <Trophy className="w-7 h-7 text-(--s-accent-2)" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">My Journey</span>
+              <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">My Journey</span>
             </h2>
-            <p className="text-[#939DB8] text-base max-w-xl mx-auto">
+            <p className="text-(--s-muted) text-base max-w-xl mx-auto">
               From curious student to data engineer — the milestones that shaped my career
             </p>
           </div>
@@ -234,7 +234,7 @@ export function MyJourneySection({ skills, experience, education }: MyJourneySec
                   className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
                     isActive
                       ? 'bg-[#6366F1] text-white shadow-lg shadow-[#6366F1]/20'
-                      : 'bg-[#171926] text-[#939DB8] border border-[#727DA1]/20 hover:border-[#6366F1]/40 hover:text-white'
+                      : 'bg-(--s-card) text-(--s-muted) border border-(color:--s-line)/20 hover:border-[#6366F1]/40 hover:text-(--s-fg)'
                   }`}
                 >
                   <Icon className="w-4 h-4" />

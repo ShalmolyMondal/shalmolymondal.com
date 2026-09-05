@@ -121,7 +121,7 @@ export default function SkillRadar() {
                             key={l}
                             points={polygonPoints(scale)}
                             fill="none"
-                            stroke="#727DA1"
+                            stroke="var(--s-line)"
                             strokeOpacity={0.15}
                             strokeWidth={1}
                         />
@@ -139,7 +139,7 @@ export default function SkillRadar() {
                             y1={CY}
                             x2={p.x}
                             y2={p.y}
-                            stroke={isActive ? '#6366F1' : '#727DA1'}
+                            stroke={isActive ? '#6366F1' : 'var(--s-line)'}
                             strokeOpacity={isActive ? 0.6 : 0.15}
                             strokeWidth={isActive ? 1.5 : 1}
                         />
@@ -150,7 +150,7 @@ export default function SkillRadar() {
                 <polygon
                     points={dataPolygon}
                     fill="rgba(99, 102, 241, 0.12)"
-                    stroke="#818CF8"
+                    stroke="var(--s-accent-2)"
                     strokeWidth={1.5}
                 />
 
@@ -163,7 +163,7 @@ export default function SkillRadar() {
                         <g key={i}>
                             {/* Glow */}
                             {(isActive || isDragging) && (
-                                <circle cx={p.x} cy={p.y} r={12} fill="rgba(99,102,241,0.2)" stroke="#818CF8" strokeWidth={0.5} />
+                                <circle cx={p.x} cy={p.y} r={12} fill="rgba(99,102,241,0.2)" stroke="var(--s-accent-2)" strokeWidth={0.5} />
                             )}
                             {/* Large hit target */}
                             <circle
@@ -181,8 +181,8 @@ export default function SkillRadar() {
                                 cx={p.x}
                                 cy={p.y}
                                 r={isDragging ? 6 : isActive ? 5 : 4}
-                                fill={isDragging ? '#818CF8' : isActive ? '#6366F1' : '#171926'}
-                                stroke={isActive || isDragging ? '#C4B5FD' : '#818CF8'}
+                                fill={isDragging ? 'var(--s-accent-2)' : isActive ? '#6366F1' : 'var(--s-card)'}
+                                stroke={isActive || isDragging ? 'var(--s-violet)' : 'var(--s-accent-2)'}
                                 strokeWidth={isDragging ? 2.5 : 1.5}
                                 style={{ pointerEvents: 'none' }}
                             />
@@ -202,7 +202,7 @@ export default function SkillRadar() {
                             y={p.y + offset.dy}
                             textAnchor={offset.anchor}
                             dominantBaseline="central"
-                            fill={isActive ? '#C4B5FD' : '#C9D3EE'}
+                            fill={isActive ? 'var(--s-violet)' : 'var(--s-text-2)'}
                             style={{
                                 fontSize: isActive ? '11px' : '9.5px',
                                 fontWeight: isActive ? 600 : 300,
@@ -221,25 +221,25 @@ export default function SkillRadar() {
                 {/* Center tooltip */}
                 {activeData ? (
                     <g>
-                        <rect x={CX - 95} y={CY - 14} width={190} height={28} rx={6} fill="#171926" fillOpacity={0.9} stroke="#6366F1" strokeWidth={0.75} strokeOpacity={0.4} />
-                        <text x={CX} y={CY + 1} textAnchor="middle" dominantBaseline="central" fill="#C4B5FD" style={{ fontSize: '8px', fontWeight: 500, fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
+                        <rect x={CX - 95} y={CY - 14} width={190} height={28} rx={6} fill="var(--s-card)" fillOpacity={0.9} stroke="#6366F1" strokeWidth={0.75} strokeOpacity={0.4} />
+                        <text x={CX} y={CY + 1} textAnchor="middle" dominantBaseline="central" fill="var(--s-violet)" style={{ fontSize: '8px', fontWeight: 500, fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
                             {activeData.group} · {Math.round(activeData.value * 100)}%
                         </text>
                     </g>
                 ) : (
-                    <text x={CX} y={CY} textAnchor="middle" dominantBaseline="central" fill="#727DA1" style={{ fontSize: '8px', fontWeight: 300, fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
+                    <text x={CX} y={CY} textAnchor="middle" dominantBaseline="central" fill="var(--s-line)" style={{ fontSize: '8px', fontWeight: 300, fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
                         Drag vertices to adjust
                     </text>
                 )}
             </svg>
             <div className="min-h-12 px-3">
-                <div className="rounded-lg border border-[#6366F1]/20 bg-[#171926]/70 px-3 py-2 text-center text-xs leading-relaxed text-[#C9D3EE]">
+                <div className="rounded-lg border border-[#6366F1]/20 bg-(--s-card)/70 px-3 py-2 text-center text-xs leading-relaxed text-(--s-text-2)">
                     {activeData ? (
                         <span>
-                            <span className="font-semibold text-[#C4B5FD]">{activeData.group}:</span> {activeData.tools}
+                            <span className="font-semibold text-(--s-violet)">{activeData.group}:</span> {activeData.tools}
                         </span>
                     ) : (
-                        <span className="text-[#939DB8]">Hover or drag a point to view the related tools.</span>
+                        <span className="text-(--s-muted)">Hover or drag a point to view the related tools.</span>
                     )}
                 </div>
             </div>

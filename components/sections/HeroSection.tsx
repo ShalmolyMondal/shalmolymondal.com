@@ -15,7 +15,7 @@ interface HeroSectionProps {
 export function HeroSection({ personal, content }: HeroSectionProps) {
 
   return (
-    <section className="relative min-h-[100dvh] flex items-center justify-center bg-[#0B0C14] antialiased w-full">
+    <section className="relative min-h-[100dvh] flex items-center justify-center bg-(--s-bg) antialiased w-full">
       <ShootingStarsBackground />
 
       {/* Spotlight Effect */}
@@ -41,19 +41,19 @@ export function HeroSection({ personal, content }: HeroSectionProps) {
             <div className="space-y-2">
               <FadeIn direction="up" delay={0.2}>
                 <h1 className="text-[3.4rem] md:text-[4.2rem] lg:text-[5.4rem] font-bold tracking-tight leading-[1.15]">
-                  <span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.greetingPrefix} {personal.name}{content.headlineSuffix}</span>
+                  <span className="bg-gradient-to-r from-(color:--s-fg) via-(color:--s-text-2) to-[#6366F1] bg-clip-text text-transparent">{content.greetingPrefix} {personal.name}{content.headlineSuffix}</span>
                 </h1>
               </FadeIn>
 
               <FadeIn direction="up" delay={0.3}>
-                <div className="text-2xl md:text-3xl text-neutral-300 font-light max-w-2xl">
+                <div className="text-2xl md:text-3xl text-(--s-text-2) font-light max-w-2xl">
                   {content.subheading}
                 </div>
               </FadeIn>
             </div>
 
             <FadeIn direction="up" delay={0.4}>
-              <p className="text-base md:text-lg text-neutral-400 max-w-2xl leading-relaxed">
+              <p className="text-base md:text-lg text-(--s-muted) max-w-2xl leading-relaxed">
                 {content.body}
               </p>
             </FadeIn>
@@ -62,13 +62,13 @@ export function HeroSection({ personal, content }: HeroSectionProps) {
               <div className="flex flex-wrap gap-4 pt-2">
                 <Link
                   href={content.primaryCtaHref}
-                  className="px-6 py-3 bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white hover:from-[#818CF8] hover:to-[#6366F1] rounded-full font-medium transition-all text-sm shadow-lg shadow-[#6366F1]/20"
+                  className="px-6 py-3 bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white hover:from-(color:--s-accent-2) hover:to-[#6366F1] rounded-full font-medium transition-all text-sm shadow-lg shadow-[#6366F1]/20"
                 >
                   {content.primaryCtaLabel}
                 </Link>
                 <Link
                   href={content.secondaryCtaHref}
-                  className="px-6 py-3 bg-[#1a1a1a] hover:bg-[#262626] rounded-full font-medium transition-all text-sm border border-[#262626] text-white"
+                  className="px-6 py-3 bg-(--s-surface) hover:bg-(--s-line-2) rounded-full font-medium transition-all text-sm border border-(color:--s-line-2) text-(--s-fg)"
                 >
                   {content.secondaryCtaLabel}
                 </Link>
@@ -105,7 +105,7 @@ export function HeroSection({ personal, content }: HeroSectionProps) {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-3 bg-[#1a1a1a] hover:bg-[#262626] rounded-full transition-colors border border-[#262626] text-white/70 hover:text-white"
+                    className="p-3 bg-(--s-surface) hover:bg-(--s-line-2) rounded-full transition-colors border border-(color:--s-line-2) text-(--s-fg)/70 hover:text-(--s-fg)"
                   >
                     {social.icon}
                   </a>

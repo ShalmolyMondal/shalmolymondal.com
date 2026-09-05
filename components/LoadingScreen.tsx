@@ -74,7 +74,7 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 bg-[#0B0C14] flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-(--s-bg) flex items-center justify-center"
         >
           <div className="text-center space-y-8">
             {/* Name with fade-in */}
@@ -92,7 +92,7 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
               initial={{ opacity: 0, scaleX: 0.8 }}
               animate={{ opacity: 1, scaleX: 1 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
-              className="w-48 sm:w-64 h-1 bg-white/10 rounded-full overflow-hidden mx-auto"
+              className="w-48 sm:w-64 h-1 bg-(--s-fg)/10 rounded-full overflow-hidden mx-auto"
             >
               {/* Progress fill */}
               <motion.div
@@ -107,7 +107,7 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-sm text-gray-400"
+              className="text-sm text-(--s-muted)"
             >
               Preparing your portfolio...
             </motion.p>

@@ -17,10 +17,10 @@ export default function Home() {
       <HeroSection personal={personal} content={site.home.hero} />
 
       {/* Hero to Content Gradient Transition */}
-      <div className="absolute top-[100vh] left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#0B0C14] -mt-32 z-20 pointer-events-none"></div>
+      <div className="absolute top-[100vh] left-0 right-0 h-32 bg-gradient-to-b from-transparent to-(color:--s-bg) -mt-32 z-20 pointer-events-none"></div>
 
       {/* Main Content Area */}
-      <div className="relative z-20 bg-[#0B0C14]">
+      <div className="relative z-20 bg-(--s-bg)">
         <CurrentFocusSection content={site.home.currentFocus} />
         <ArtGallerySection artPieces={artPieces} content={site.home.artSection} />
         <BlogSection blogs={blogs} content={site.home.blogSection} labels={site.labels} />

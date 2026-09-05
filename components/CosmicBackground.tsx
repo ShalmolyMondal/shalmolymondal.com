@@ -10,7 +10,7 @@ interface CosmicBackgroundProps {
 
 export default function CosmicBackground({ children, className = '' }: CosmicBackgroundProps) {
     return (
-        <div className={`relative w-full overflow-hidden bg-gradient-to-b from-[#0B0C14] via-[#0f101f] to-[#161a31] ${className}`}>
+        <div className={`relative w-full overflow-hidden bg-gradient-to-b from-(color:--s-bg) via-(color:--s-deep) to-(color:--s-deep) ${className}`}>
             <style jsx>{`
                 @keyframes cosmicBlob1 {
                     0%, 100% { opacity: 0.5; transform: scale(0.8); }
@@ -29,7 +29,7 @@ export default function CosmicBackground({ children, className = '' }: CosmicBac
 
                 {/* Deep Galaxy Blue/Purple Blob - Top Left */}
                 <div
-                    className="absolute -top-[20%] -left-[10%] w-[80vw] h-[80vw] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-800/40 via-[#1E1B4B]/30 to-transparent blur-[80px] will-change-transform"
+                    className="absolute -top-[20%] -left-[10%] w-[80vw] h-[80vw] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-800/40 via-(color:--s-deep)/30 to-transparent blur-[80px] will-change-transform"
                     style={{ animation: 'cosmicBlob1 20s ease-in-out infinite' }}
                 />
 

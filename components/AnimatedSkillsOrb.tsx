@@ -17,7 +17,7 @@ export default function AnimatedSkillsOrb({ title, skills, delay = 0 }: Animated
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5 }}
-      className="bg-[#171926] border border-[#727DA1]/10 rounded-xl p-6 relative overflow-hidden group"
+      className="bg-(--s-card) border border-(color:--s-line)/10 rounded-xl p-6 relative overflow-hidden group"
     >
       {/* Subtle gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#6366F1]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -66,8 +66,8 @@ export default function AnimatedSkillsOrb({ title, skills, delay = 0 }: Animated
                 transition-all duration-200
                 ${
                   hoveredIndex === index
-                    ? 'bg-[#6366F1]/15 text-[#818CF8] border-[#6366F1]/30 shadow-lg shadow-[#6366F1]/20'
-                    : 'bg-[#0B0C14] text-[#C9D3EE] border-[#727DA1]/10'
+                    ? 'bg-[#6366F1]/15 text-(--s-accent-2) border-[#6366F1]/30 shadow-lg shadow-[#6366F1]/20'
+                    : 'bg-(--s-bg) text-(--s-text-2) border-(color:--s-line)/10'
                 }
               `}
             >

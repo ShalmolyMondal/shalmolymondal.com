@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 
 type Theme = 'light' | 'dark';
 
@@ -9,44 +9,26 @@ interface ThemeContextType {
     toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType>({ theme: 'dark', toggleTheme: () => {} });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
+    // Dark is the default. The inline script in app/layout.tsx applies a saved
+    // 'light' choice before paint; here we just sync React state to the DOM.
     const [theme, setTheme] = useState<Theme>('dark');
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        const timer = window.setTimeout(() => {
-            setMounted(true);
-            // Check localStorage for saved theme preference
-            const savedTheme = localStorage.getItem('theme') as Theme;
-            if (savedTheme) {
-                setTheme(savedTheme);
-            } else {
-                // Check system preference
-                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                setTheme(prefersDark ? 'dark' : 'light');
-            }
-        }, 0);
-
-        return () => window.clearTimeout(timer);
+        setTheme(document.documentElement.classList.contains('light') ? 'light' : 'dark');
     }, []);
 
-    useEffect(() => {
-        if (mounted) {
-            localStorage.setItem('theme', theme);
-            document.documentElement.classList.toggle('dark', theme === 'dark');
-            document.documentElement.classList.toggle('light', theme === 'light');
-        }
-    }, [theme, mounted]);
-
-    const toggleTheme = () => {
-        setTheme(prev => prev === 'dark' ? 'light' : 'dark');
-    };
-
-    if (!mounted) {
-        return <>{children}</>;
-    }
+    const toggleTheme = useCallback(() => {
+        setTheme(prev => {
+            const next: Theme = prev === 'dark' ? 'light' : 'dark';
+            document.documentElement.classList.toggle('dark', next === 'dark');
+            document.documentElement.classList.toggle('light', next === 'light');
+            try { localStorage.setItem('theme', next); } catch {}
+            return next;
+        });
+    }, []);
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -56,9 +38,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function useTheme() {
-    const context = useContext(ThemeContext);
-    if (context === undefined) {
-        throw new Error('useTheme must be used within a ThemeProvider');
-    }
-    return context;
+    return useContext(ThemeContext);
 }

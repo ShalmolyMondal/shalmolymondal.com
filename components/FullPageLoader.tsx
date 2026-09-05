@@ -51,10 +51,10 @@ export default function FullPageLoader({ children, name = 'Shalmoly' }: FullPage
       {showLoader && (
         <div
           aria-hidden="true"
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0B0C14] transition-opacity duration-300 ${isReady ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
+          className={`fixed inset-0 z-50 flex items-center justify-center bg-(--s-bg) transition-opacity duration-300 ${isReady ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
         >
           <div className="text-center">
-            <h1 className="text-5xl md:text-7xl font-bold text-white tracking-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-(--s-fg) tracking-tight">
               {displayedText}
               {displayedText.length < name.length && (
                 <span className="animate-pulse">|</span>

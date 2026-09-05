@@ -22,7 +22,7 @@ function InstitutionLogo({ edu }: { edu: Education }) {
     if (edu.logo) {
         const isSvg = edu.logo.endsWith('.svg');
         return (
-            <div className={`w-16 h-16 rounded-full flex items-center justify-center p-2.5 ${isSvg ? 'bg-transparent' : 'bg-white/90'}`}>
+            <div className={`w-16 h-16 rounded-full flex items-center justify-center p-2.5 ${isSvg ? 'bg-transparent' : 'bg-(--s-fg)/90'}`}>
                 <Image
                     src={edu.logo}
                     alt={edu.institution}
@@ -41,7 +41,7 @@ function InstitutionLogo({ edu }: { edu: Education }) {
         .join('');
     return (
         <div className="w-14 h-14 rounded-full bg-[#6366F1]/15 border border-[#6366F1]/25 flex items-center justify-center">
-            <span className="text-sm font-bold text-[#818CF8] tracking-wide">{initials}</span>
+            <span className="text-sm font-bold text-(--s-accent-2) tracking-wide">{initials}</span>
         </div>
     );
 }
@@ -63,7 +63,7 @@ export default function WorkPage() {
     ];
 
     return (
-        <div className="min-h-screen bg-[#0B0C14] text-white relative overflow-hidden">
+        <div className="min-h-screen bg-(--s-bg) text-(--s-fg) relative overflow-hidden">
             <FlowingGradient blobCount={2} animated={false} />
 
             <main className="pt-24 pb-20">
@@ -71,19 +71,19 @@ export default function WorkPage() {
                     {/* Header */}
                     <FadeIn direction="up">
                         <div className="text-center mb-12">
-                            <h1 className="text-5xl md:text-6xl font-bold mb-4"><span className="bg-gradient-to-r from-white via-[#C9D3EE] to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
-                            <p className="text-lg text-[#939DB8] max-w-2xl mx-auto">
+                            <h1 className="text-5xl md:text-6xl font-bold mb-4"><span className="bg-gradient-to-r from-(color:--s-fg) via-(color:--s-text-2) to-[#6366F1] bg-clip-text text-transparent">{content.title}</span></h1>
+                            <p className="text-lg text-(--s-muted) max-w-2xl mx-auto">
                                 {content.description}
                             </p>
                             <a
                                 href={content.resumeHref}
                                 download
-                                className="group inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-xl border border-[#727DA1]/15 bg-[#171926]/50 hover:border-[#6366F1]/30 hover:bg-[#171926] transition-all"
+                                className="group inline-flex items-center gap-3 mt-6 px-5 py-3 rounded-xl border border-(color:--s-line)/15 bg-(--s-card)/50 hover:border-[#6366F1]/30 hover:bg-(--s-card) transition-all"
                             >
-                                <svg className="w-4 h-4 text-[#818CF8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-4 h-4 text-(--s-accent-2)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                 </svg>
-                                <span className="text-sm font-medium text-[#C9D3EE] group-hover:text-white transition-colors">{content.resumeLabel}</span>
+                                <span className="text-sm font-medium text-(--s-text-2) group-hover:text-(--s-fg) transition-colors">{content.resumeLabel}</span>
                             </a>
                         </div>
                     </FadeIn>
@@ -92,13 +92,13 @@ export default function WorkPage() {
                     <section className="mb-20">
                         <FadeIn direction="up">
                             <h2 className="text-2xl font-bold mb-10">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.experienceTitle}</span>
+                                <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.experienceTitle}</span>
                             </h2>
                         </FadeIn>
 
                         <div className="relative">
                             {/* Center vertical line — hidden on mobile */}
-                            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-[#727DA1]/30 -translate-x-1/2" />
+                            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-(--s-line)/30 -translate-x-1/2" />
 
                             <div className="space-y-12 md:space-y-16">
                                 {about.experience.map((exp, i) => {
@@ -111,15 +111,15 @@ export default function WorkPage() {
 
                                                 {/* Mobile layout */}
                                                 <div className="md:hidden flex gap-4 items-start">
-                                                    <div className="shrink-0 w-12 h-12 rounded-full border-2 border-[#727DA1]/40 bg-[#0B0C14] flex items-center justify-center z-10">
-                                                        <Icon className="w-5 h-5 text-[#818CF8]" />
+                                                    <div className="shrink-0 w-12 h-12 rounded-full border-2 border-(color:--s-line)/40 bg-(--s-bg) flex items-center justify-center z-10">
+                                                        <Icon className="w-5 h-5 text-(--s-accent-2)" />
                                                     </div>
-                                                    <div className="flex-1 p-5 rounded-xl bg-[#171926] border border-[#727DA1]/15">
-                                                        <h4 className="text-base font-semibold text-white leading-snug">{exp.role}</h4>
-                                                        <p className="text-sm text-[#C9D3EE]">{exp.company}</p>
-                                                        {exp.location && <p className="text-xs text-[#939DB8] mt-0.5">{exp.location}</p>}
-                                                        <p className="text-xs text-[#818CF8] font-medium mt-1">{exp.period}</p>
-                                                        <p className="text-sm text-[#939DB8] leading-relaxed mt-3">{exp.description}</p>
+                                                    <div className="flex-1 p-5 rounded-xl bg-(--s-card) border border-(color:--s-line)/15">
+                                                        <h4 className="text-base font-semibold text-(--s-fg) leading-snug">{exp.role}</h4>
+                                                        <p className="text-sm text-(--s-text-2)">{exp.company}</p>
+                                                        {exp.location && <p className="text-xs text-(--s-muted) mt-0.5">{exp.location}</p>}
+                                                        <p className="text-xs text-(--s-accent-2) font-medium mt-1">{exp.period}</p>
+                                                        <p className="text-sm text-(--s-muted) leading-relaxed mt-3">{exp.description}</p>
                                                     </div>
                                                 </div>
 
@@ -128,34 +128,34 @@ export default function WorkPage() {
                                                     {/* Left column */}
                                                     <div className={`flex ${isLeft ? 'justify-end' : 'justify-end items-center'}`}>
                                                         {isLeft ? (
-                                                            <div className="relative max-w-md w-full p-5 rounded-xl bg-[#171926] border border-[#727DA1]/15">
-                                                                <h4 className="text-base font-semibold text-white leading-snug">{exp.role}</h4>
-                                                                <p className="text-sm text-[#C9D3EE]">{exp.company}</p>
-                                                                {exp.location && <p className="text-xs text-[#939DB8] mt-0.5">{exp.location}</p>}
-                                                                <p className="text-sm text-[#939DB8] leading-relaxed mt-3">{exp.description}</p>
-                                                                <div className="absolute top-5 -right-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-8 border-l-[#727DA1]/15" />
+                                                            <div className="relative max-w-md w-full p-5 rounded-xl bg-(--s-card) border border-(color:--s-line)/15">
+                                                                <h4 className="text-base font-semibold text-(--s-fg) leading-snug">{exp.role}</h4>
+                                                                <p className="text-sm text-(--s-text-2)">{exp.company}</p>
+                                                                {exp.location && <p className="text-xs text-(--s-muted) mt-0.5">{exp.location}</p>}
+                                                                <p className="text-sm text-(--s-muted) leading-relaxed mt-3">{exp.description}</p>
+                                                                <div className="absolute top-5 -right-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-8 border-l-(color:--s-line)/15" />
                                                             </div>
                                                         ) : (
-                                                            <span className="text-sm text-[#939DB8] font-medium whitespace-nowrap mt-3">{exp.period}</span>
+                                                            <span className="text-sm text-(--s-muted) font-medium whitespace-nowrap mt-3">{exp.period}</span>
                                                         )}
                                                     </div>
 
                                                     {/* Center icon */}
-                                                    <div className="shrink-0 w-12 h-12 rounded-full border-2 border-[#727DA1]/40 bg-[#0B0C14] flex items-center justify-center z-10">
-                                                        <Icon className="w-5 h-5 text-[#818CF8]" />
+                                                    <div className="shrink-0 w-12 h-12 rounded-full border-2 border-(color:--s-line)/40 bg-(--s-bg) flex items-center justify-center z-10">
+                                                        <Icon className="w-5 h-5 text-(--s-accent-2)" />
                                                     </div>
 
                                                     {/* Right column */}
                                                     <div className={`flex ${isLeft ? 'items-center' : 'justify-start'}`}>
                                                         {isLeft ? (
-                                                            <span className="text-sm text-[#939DB8] font-medium whitespace-nowrap mt-3">{exp.period}</span>
+                                                            <span className="text-sm text-(--s-muted) font-medium whitespace-nowrap mt-3">{exp.period}</span>
                                                         ) : (
-                                                            <div className="relative max-w-md w-full p-5 rounded-xl bg-[#171926] border border-[#727DA1]/15">
-                                                                <h4 className="text-base font-semibold text-white leading-snug">{exp.role}</h4>
-                                                                <p className="text-sm text-[#C9D3EE]">{exp.company}</p>
-                                                                {exp.location && <p className="text-xs text-[#939DB8] mt-0.5">{exp.location}</p>}
-                                                                <p className="text-sm text-[#939DB8] leading-relaxed mt-3">{exp.description}</p>
-                                                                <div className="absolute top-5 -left-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-8 border-r-[#727DA1]/15" />
+                                                            <div className="relative max-w-md w-full p-5 rounded-xl bg-(--s-card) border border-(color:--s-line)/15">
+                                                                <h4 className="text-base font-semibold text-(--s-fg) leading-snug">{exp.role}</h4>
+                                                                <p className="text-sm text-(--s-text-2)">{exp.company}</p>
+                                                                {exp.location && <p className="text-xs text-(--s-muted) mt-0.5">{exp.location}</p>}
+                                                                <p className="text-sm text-(--s-muted) leading-relaxed mt-3">{exp.description}</p>
+                                                                <div className="absolute top-5 -left-2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-r-8 border-r-(color:--s-line)/15" />
                                                             </div>
                                                         )}
                                                     </div>
@@ -170,26 +170,26 @@ export default function WorkPage() {
                     </section>
 
                     {/* Divider */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-[#727DA1]/20 to-transparent mb-20" />
+                    <div className="h-px bg-gradient-to-r from-transparent via-(color:--s-line)/20 to-transparent mb-20" />
 
                     {/* Education */}
                     <section className="mb-20">
                         <FadeIn direction="up">
                             <h2 className="text-2xl font-bold mb-6">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.educationTitle}</span>
+                                <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.educationTitle}</span>
                             </h2>
                         </FadeIn>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
                             {about.education.map((edu, i) => (
                                 <FadeIn key={i} direction="up" delay={i * 0.1} className="flex">
-                                    <SpotlightCard className="flex flex-col bg-[#171926] rounded-xl border border-[#727DA1]/15 hover:border-[#6366F1]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#6366F1]/10 text-center p-6 w-full">
+                                    <SpotlightCard className="flex flex-col bg-(--s-card) rounded-xl border border-(color:--s-line)/15 hover:border-[#6366F1]/40 transition-all duration-300 hover:shadow-lg hover:shadow-[#6366F1]/10 text-center p-6 w-full">
                                         <div className="flex justify-center items-center h-24 mb-4">
                                             <InstitutionLogo edu={edu} />
                                         </div>
-                                        <h4 className="text-base font-semibold text-white mb-1">{edu.degree}</h4>
-                                        <p className="text-sm text-[#C9D3EE] mb-0.5">{edu.institution}</p>
-                                        <p className="text-sm text-[#939DB8] mb-2 flex-1">{edu.field}</p>
-                                        <p className="text-xs text-[#818CF8] font-medium">{edu.period}</p>
+                                        <h4 className="text-base font-semibold text-(--s-fg) mb-1">{edu.degree}</h4>
+                                        <p className="text-sm text-(--s-text-2) mb-0.5">{edu.institution}</p>
+                                        <p className="text-sm text-(--s-muted) mb-2 flex-1">{edu.field}</p>
+                                        <p className="text-xs text-(--s-accent-2) font-medium">{edu.period}</p>
                                     </SpotlightCard>
                                 </FadeIn>
                             ))}
@@ -197,13 +197,13 @@ export default function WorkPage() {
                     </section>
 
                     {/* Divider */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-[#727DA1]/20 to-transparent mb-20" />
+                    <div className="h-px bg-gradient-to-r from-transparent via-(color:--s-line)/20 to-transparent mb-20" />
 
                     {/* Skills */}
                     <section className="mb-20">
                         <FadeIn direction="up">
                             <h2 className="text-2xl font-bold mb-8">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.skillsTitle}</span>
+                                <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.skillsTitle}</span>
                             </h2>
                         </FadeIn>
 
@@ -219,12 +219,12 @@ export default function WorkPage() {
                             <div className="space-y-5 mt-10">
                                 {skillGroups.map((group) => (
                                     <div key={group.title} className="flex flex-col sm:flex-row sm:items-start gap-3">
-                                        <h4 className="text-xs font-medium text-[#818CF8] uppercase tracking-wider sm:w-32 shrink-0 pt-1.5">{group.title}</h4>
+                                        <h4 className="text-xs font-medium text-(--s-accent-2) uppercase tracking-wider sm:w-32 shrink-0 pt-1.5">{group.title}</h4>
                                         <div className="flex flex-wrap gap-2">
                                             {group.items.map((skill) => (
                                                 <span
                                                     key={skill}
-                                                    className="px-3 py-1.5 text-sm text-[#C9D3EE] bg-[#171926] border border-[#727DA1]/20 rounded-lg hover:border-[#6366F1]/40 transition-colors"
+                                                    className="px-3 py-1.5 text-sm text-(--s-text-2) bg-(--s-card) border border-(color:--s-line)/20 rounded-lg hover:border-[#6366F1]/40 transition-colors"
                                                 >
                                                     {skill}
                                                 </span>
@@ -237,11 +237,11 @@ export default function WorkPage() {
                     </section>
 
                     {/* Divider */}
-                    <div className="h-px bg-gradient-to-r from-transparent via-[#727DA1]/20 to-transparent mb-20" />
+                    <div className="h-px bg-gradient-to-r from-transparent via-(color:--s-line)/20 to-transparent mb-20" />
 
                     {/* Featured Projects */}
                     <section className="mb-16">
-                        <h2 className="text-2xl font-bold mb-6"><span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.projectsTitle}</span></h2>
+                        <h2 className="text-2xl font-bold mb-6"><span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.projectsTitle}</span></h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                             {projects.map((project, index) => (
                                 <FadeIn key={project.id} direction="up" delay={index * 0.15}>
@@ -255,10 +255,10 @@ export default function WorkPage() {
                     <section className="mb-16">
                         {/* Thesis */}
                         <h2 className="text-2xl font-bold mb-6">
-                            <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.thesisTitle}</span>
+                            <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.thesisTitle}</span>
                         </h2>
-                        <SpotlightCard className="bg-[#171926] border border-[#727DA1]/15 rounded-xl p-6 mb-8">
-                            <p className="text-[#C9D3EE] text-sm leading-relaxed">
+                        <SpotlightCard className="bg-(--s-card) border border-(color:--s-line)/15 rounded-xl p-6 mb-8">
+                            <p className="text-(--s-text-2) text-sm leading-relaxed">
                                 {research.description}
                             </p>
                             {research.thesis.url && (
@@ -266,7 +266,7 @@ export default function WorkPage() {
                                     href={research.thesis.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] text-sm font-medium mt-4 transition-colors"
+                                    className="inline-flex items-center gap-2 text-[#6366F1] hover:text-(--s-accent-2) text-sm font-medium mt-4 transition-colors"
                                 >
                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -279,23 +279,23 @@ export default function WorkPage() {
                         {/* Publications */}
                         <div>
                             <h2 className="text-2xl font-bold mb-6">
-                                <span className="bg-gradient-to-r from-[#C9D3EE] to-[#818CF8] bg-clip-text text-transparent">{content.publicationsTitle}</span>
+                                <span className="bg-gradient-to-r from-(color:--s-text-2) to-(color:--s-accent-2) bg-clip-text text-transparent">{content.publicationsTitle}</span>
                             </h2>
                             <div className="space-y-8">
                                 {research.publications.map((pub) => (
                                     <SpotlightCard key={pub.id}>
-                                        <div className="bg-[#171926] border border-[#727DA1]/15 rounded-xl p-6 hover:border-[#6366F1]/30 transition-all group">
+                                        <div className="bg-(--s-card) border border-(color:--s-line)/15 rounded-xl p-6 hover:border-[#6366F1]/30 transition-all group">
                                             <div className="flex items-center gap-3 mb-2">
-                                                <span className="px-2 py-0.5 bg-[#6366F1]/15 text-[#818CF8] text-xs font-medium rounded border border-[#6366F1]/20">
+                                                <span className="px-2 py-0.5 bg-[#6366F1]/15 text-(--s-accent-2) text-xs font-medium rounded border border-[#6366F1]/20">
                                                     {pub.venue}
                                                 </span>
-                                                <span className="text-[#939DB8] text-xs">{pub.year}</span>
-                                                <span className="text-[#939DB8] text-xs">· {pub.type}</span>
+                                                <span className="text-(--s-muted) text-xs">{pub.year}</span>
+                                                <span className="text-(--s-muted) text-xs">· {pub.type}</span>
                                             </div>
-                                            <h4 className="text-base font-medium text-white mb-3 group-hover:text-[#C9D3EE] transition-colors leading-snug">
+                                            <h4 className="text-base font-medium text-(--s-fg) mb-3 group-hover:text-(--s-text-2) transition-colors leading-snug">
                                                 {pub.title}
                                             </h4>
-                                            <p className="text-[#939DB8] text-sm mb-4">{pub.authors}</p>
+                                            <p className="text-(--s-muted) text-sm mb-4">{pub.authors}</p>
 
                                             <div className="flex items-center gap-3 pt-2">
                                                 {pub.doi && (
@@ -303,7 +303,7 @@ export default function WorkPage() {
                                                         href={pub.doi}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
-                                                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#6366F1]/15 text-[#818CF8] text-xs font-medium rounded border border-[#6366F1]/30 hover:border-[#6366F1]/60 hover:text-[#C9D3EE] transition-colors"
+                                                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#6366F1]/15 text-(--s-accent-2) text-xs font-medium rounded border border-[#6366F1]/30 hover:border-[#6366F1]/60 hover:text-(--s-text-2) transition-colors"
                                                     >
                                                         {content.doiLabel}
                                                         <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -315,7 +315,7 @@ export default function WorkPage() {
                                                     href={pub.pdfUrl ?? pub.url}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center gap-2 text-[#6366F1] hover:text-[#818CF8] text-xs font-medium transition-colors"
+                                                    className="inline-flex items-center gap-2 text-[#6366F1] hover:text-(--s-accent-2) text-xs font-medium transition-colors"
                                                 >
                                                     {content.publicationLinkLabel}
                                                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

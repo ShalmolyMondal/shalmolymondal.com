@@ -4,6 +4,47 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ===== Site palette (dark = default) ===== */
+:root {
+    --s-bg: #0B0C14;
+    --s-card: #171926;
+    --s-surface: #1E2133;
+    --s-deep: #0F0F1E;
+    --s-fg: #FFFFFF;
+    --s-text-2: #C9D3EE;
+    --s-muted: #939DB8;
+    --s-line: #727DA1;
+    --s-line-2: #262626;
+    --s-accent-2: #818CF8;
+    --s-accent-3: #A5B4FC;
+    --s-accent-4: #C7D2FE;
+    --s-accent-5: #E0E7FF;
+    --s-violet: #C4B5FD;
+    color-scheme: dark;
+}
+html.light {
+    --s-bg: #F4F5FB;
+    --s-card: #FFFFFF;
+    --s-surface: #E9ECF6;
+    --s-deep: #EEF0F8;
+    --s-fg: #12142A;
+    --s-text-2: #3B4160;
+    --s-muted: #5C6383;
+    --s-line: #6B7394;
+    --s-line-2: #C9CEE0;
+    --s-accent-2: #4F46E5;
+    --s-accent-3: #4338CA;
+    --s-accent-4: #4338CA;
+    --s-accent-5: #3730A3;
+    --s-violet: #6D28D9;
+    --gradient-from: #F4F5FB;
+    --gradient-via: #E9ECF6;
+    --gradient-to: #F4F5FB;
+    color-scheme: light;
+}
+html { background: var(--s-bg); color: var(--s-fg); }
+
+
 :root {
     --muted: oklch(0.97 0 0);
     --border: oklch(0.922 0 0);
