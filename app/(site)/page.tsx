@@ -22,7 +22,7 @@ export default function Home() {
       {/* Main Content Area */}
       <div className="relative z-20 bg-(--s-bg)">
         <CurrentFocusSection content={site.home.currentFocus} />
-        <ArtGallerySection artPieces={artPieces} content={site.home.artSection} />
+        <ArtGallerySection artPieces={artPieces} content={site.home.artSection} etsyHref={personal.social.etsy} />
         <BlogSection blogs={blogs} content={site.home.blogSection} labels={site.labels} />
       </div>
 

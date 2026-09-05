@@ -6,6 +6,7 @@ import Spotlight from '@/components/Spotlight';
 import ScrollIndicator from '@/components/ScrollIndicator';
 import { CodeWindow } from '@/components/CodeWindow';
 import RotatingBadge from '@/components/RotatingBadge';
+import { ShoppingBag } from 'lucide-react';
 
 interface HeroSectionProps {
   personal: Personal;
@@ -98,7 +99,12 @@ export function HeroSection({ personal, content }: HeroSectionProps) {
                     href: personal.social.googleScholar,
                     icon: <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z" /></svg>
                   },
-                ].map((social) => (
+                  {
+                    name: 'Etsy',
+                    href: personal.social.etsy,
+                    icon: <ShoppingBag className="w-5 h-5" />
+                  },
+                ].filter((social) => social.href).map((social) => (
                   <a
                     key={social.name}
                     href={social.href}

@@ -2,13 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Art, SectionIntro } from '@/lib/data';
 import SpotlightCard from '@/components/SpotlightCard';
+import { ShoppingBag } from 'lucide-react';
 
 interface ArtGallerySectionProps {
   artPieces: Art[];
   content: SectionIntro;
+  etsyHref?: string;
 }
 
-export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps) {
+export function ArtGallerySection({ artPieces, content, etsyHref }: ArtGallerySectionProps) {
   if (artPieces.length === 0) return null;
 
   const featured = artPieces[0];
@@ -86,11 +88,17 @@ export function ArtGallerySection({ artPieces, content }: ArtGallerySectionProps
           </div>
         </div>
 
-        <div className="mt-8">
+        <div className="mt-8 flex flex-wrap items-center gap-6">
           <Link href={content.ctaHref ?? '/art'} className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-(--s-accent-2) font-medium transition-colors">
             {content.ctaLabel ?? 'View All Art'}
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </Link>
+          {etsyHref && (
+            <a href={etsyHref} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-sm text-[#6366F1] hover:text-(--s-accent-2) font-medium transition-colors">
+              <ShoppingBag className="w-4 h-4" />
+              Shop on Etsy
+            </a>
+          )}
         </div>
       </div>
     </section>
