@@ -202,7 +202,12 @@ html { background: var(--s-bg); color: var(--s-fg); }
 }
 
 @layer utilities {
-.animate-spotlight {
+.spotlight-beam {
+        fill: var(--s-spot);
+        fill-opacity: var(--s-spot-opacity);
+    }
+
+    .animate-spotlight {
         animation: spotlight 2s ease .75s 1 forwards;
     }
 
