@@ -205,7 +205,7 @@
       "status": "Published",
       "progress": 100,
       "image": "/projects/face-recognition.jpg",
-      "pdfUrl": "https://shalmolymondal.com/upload/doc/FaceRecognition_PCA_DC_2017.pdf",
+      "pdfUrl": "/docs/FaceRecognition_PCA_DC_2017.pdf",
       "featured": true
     },
     {
