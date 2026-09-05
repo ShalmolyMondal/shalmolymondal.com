@@ -11,7 +11,7 @@
       "googleScholar": "https://scholar.google.com.au/citations?user=qE84Td8AAAAJ&hl=en&authuser=1",
       "twitter": "https://twitter.com/shalmoly",
       "medium": "https://medium.com/@shalmoly",
-      "instagram": "https://www.instagram.com/shalmolymondal/"
+      "instagram": "https://www.instagram.com/ink_with_shalmoly/"
     }
   },
   "about": {
@@ -228,27 +228,147 @@
   "art": [
     {
       "id": "1",
-      "title": "Abstract Data Flow",
-      "description": "Digital art representing the flow of data through pipelines",
-      "image": "/art/data-flow.png",
-      "category": "Digital Art",
-      "date": "2024-01-15"
+      "title": "Petal Mandala",
+      "description": "Layered petal mandala, fineliner on paper. One of my print-test pieces.",
+      "image": "/art/petal-mandala.jpg",
+      "category": "Mandala",
+      "date": ""
     },
     {
       "id": "2",
-      "title": "Neural Networks",
-      "description": "Visualization of neural network architecture",
-      "image": "/art/neural-networks.png",
-      "category": "Generative Art",
-      "date": "2024-02-20"
+      "title": "Ember Mandala",
+      "description": "Digital mandala in ember reds and gold on black.",
+      "image": "/art/ember-mandala.jpg",
+      "category": "Digital Mandala",
+      "date": ""
     },
     {
       "id": "3",
-      "title": "Code Poetry",
-      "description": "Artistic interpretation of beautiful code structures",
-      "image": "/art/code-poetry.png",
-      "category": "Digital Art",
-      "date": "2024-03-10"
+      "title": "Blue Lotus",
+      "description": "Layered blue lotus mandala, digital.",
+      "image": "/art/blue-lotus-mandala.jpg",
+      "category": "Digital Mandala",
+      "date": ""
+    },
+    {
+      "id": "4",
+      "title": "Night Bloom",
+      "description": "White ink mandala on black paper.",
+      "image": "/art/white-on-black-mandala.jpg",
+      "category": "Mandala",
+      "date": ""
+    },
+    {
+      "id": "5",
+      "title": "Flower Mandala",
+      "description": "Fineliner flower mandala with dotwork accents.",
+      "image": "/art/flower-mandala.jpg",
+      "category": "Mandala",
+      "date": ""
+    },
+    {
+      "id": "6",
+      "title": "Full Circle",
+      "description": "Dense fineliner mandala, black ink on white.",
+      "image": "/art/circle-mandala.jpg",
+      "category": "Mandala",
+      "date": ""
+    },
+    {
+      "id": "7",
+      "title": "Rose Gold Dots",
+      "description": "Dot mandala in rose gold and white on black.",
+      "image": "/art/rose-gold-dot-mandala.jpg",
+      "category": "Dot Mandala",
+      "date": ""
+    },
+    {
+      "id": "8",
+      "title": "Ocean Dots",
+      "description": "Dot mandala in blues and white on black.",
+      "image": "/art/blue-dot-mandala.jpg",
+      "category": "Dot Mandala",
+      "date": ""
+    },
+    {
+      "id": "9",
+      "title": "Flower of Life",
+      "description": "Flower of life pattern in green dotwork.",
+      "image": "/art/flower-of-life.jpg",
+      "category": "Dot Mandala",
+      "date": ""
+    },
+    {
+      "id": "10",
+      "title": "Coaster Trio",
+      "description": "Three hand-drawn mandala coasters.",
+      "image": "/art/coaster-mandalas.jpg",
+      "category": "Mandala",
+      "date": ""
+    },
+    {
+      "id": "11",
+      "title": "Half Mandala",
+      "description": "Half mandala on dotted grid, fineliner.",
+      "image": "/art/half-mandala-dots.jpg",
+      "category": "Mandala",
+      "date": ""
+    },
+    {
+      "id": "12",
+      "title": "Framed Half Mandala",
+      "description": "Half mandala with hanging pendants and floral border.",
+      "image": "/art/framed-half-mandala.jpg",
+      "category": "Mandala",
+      "date": ""
+    },
+    {
+      "id": "13",
+      "title": "Durga",
+      "description": "Goddess Durga in mandala-inspired linework.",
+      "image": "/art/durga.jpg",
+      "category": "Illustration",
+      "date": ""
+    },
+    {
+      "id": "14",
+      "title": "Mountain Sunrise",
+      "description": "Stippled mountain and sunrise, fineliner in sketchbook.",
+      "image": "/art/mountain-sunrise.jpg",
+      "category": "Ink Sketch",
+      "date": ""
+    },
+    {
+      "id": "15",
+      "title": "Shipyard",
+      "description": "Pen and ink sketch of a shipyard crane.",
+      "image": "/art/shipyard.jpg",
+      "category": "Ink Sketch",
+      "date": ""
+    },
+    {
+      "id": "16",
+      "title": "Riverbank Boats",
+      "description": "Pen and ink sketch of moored boats at dusk.",
+      "image": "/art/riverbank-boats.jpg",
+      "category": "Ink Sketch",
+      "date": ""
+    },
+    {
+      "id": "17",
+      "title": "Lakeside Pines",
+      "description": "Stippled lakeside landscape with pine trees.",
+      "image": "/art/lakeside-pines.jpg",
+      "category": "Ink Sketch",
+      "date": ""
+    },
+    {
+      "id": "18",
+      "title": "Dalí Mask",
+      "description": "Graphite portrait, Money Heist inspired.",
+      "image": "/art/dali-mask.jpg",
+      "category": "Portrait",
+      "date": ""
     }
   ],
   "blogs": [
@@ -390,8 +510,8 @@
         ]
       },
       "artSection": {
-        "title": "Creative Expression",
-        "description": "Exploring the intersection of creativity and visual storytelling through digital art.",
+        "title": "The Nest",
+        "description": "Hand-drawn mandalas, dotwork and ink sketches. A living archive of creativity, growth, and meditative process.",
         "ctaLabel": "View All Art",
         "ctaHref": "/art"
       },
@@ -468,8 +588,8 @@
       "doiLabel": "DOI"
     },
     "artPage": {
-      "title": "Art Gallery",
-      "description": "Creative expressions and digital art"
+      "title": "The Nest",
+      "description": "A living archive of creativity, growth, and meditative process."
     },
     "blogPage": {
       "eyebrow": "Latest Writings",

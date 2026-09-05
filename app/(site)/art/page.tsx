@@ -45,7 +45,7 @@ export default function ArtPage() {
                                         {art.title}
                                     </h3>
                                     <p className="text-[#939DB8] text-sm mb-3">{art.description}</p>
-                                    <div className="text-xs text-[#939DB8]">{art.date}</div>
+                                    {art.date && <div className="text-xs text-[#939DB8]">{art.date}</div>}
                                 </div>
                             </div>
                         ))}

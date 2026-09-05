@@ -15,9 +15,9 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
     const preloadImages = async () => {
       // Critical images to preload
       const imageSources = [
-        '/art/data-flow.png',
-        '/art/code-poetry.png',
-        '/art/neural-networks.png',
+        '/art/petal-mandala.jpg',
+        '/art/ember-mandala.jpg',
+        '/art/blue-lotus-mandala.jpg',
       ];
 
       try {
