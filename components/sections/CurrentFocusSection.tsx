@@ -28,14 +28,14 @@ export function CurrentFocusSection({ content }: CurrentFocusSectionProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {content.items.map((item, index) => {
             const isDataEngineer = item.icon === 'database';
-            const bgGradient = isDataEngineer ? 'bg-gradient-to-br from-blue-500/12 to-[#6366F1]/5' : 'bg-gradient-to-br from-amber-500/12 to-orange-500/5';
+            const bgGradient = isDataEngineer ? 'bg-gradient-to-br from-blue-500/12 to-[#6366F1]/5 light:from-blue-500/25 light:to-[#6366F1]/15' : 'bg-gradient-to-br from-amber-500/12 to-orange-500/5 light:from-amber-500/30 light:to-orange-500/15';
             const borderColor = isDataEngineer ? 'border-l-blue-500' : 'border-l-amber-500';
-            const iconBg = isDataEngineer ? 'bg-blue-500/15' : 'bg-amber-500/15';
-            const iconColor = isDataEngineer ? 'text-blue-300' : 'text-amber-300';
+            const iconBg = isDataEngineer ? 'bg-blue-500/15 light:bg-blue-600/25' : 'bg-amber-500/15 light:bg-amber-500/35';
+            const iconColor = isDataEngineer ? 'text-blue-300 light:text-blue-800' : 'text-amber-300 light:text-amber-800';
 
             return (
               <FadeIn key={index} direction="left" delay={0.4 + index * 0.1}>
-                <div className={`flex items-center gap-4 p-5 rounded-xl border border-(color:--s-line)/25 border-l-4 ${borderColor} ${bgGradient} transition-colors hover:border-(color:--s-line)/50 hover:bg-(--s-fg)/5`}>
+                <div className={`flex items-center gap-4 p-5 rounded-xl border border-(color:--s-line)/25 light:border-(color:--s-line)/45 border-l-4 ${borderColor} ${bgGradient} transition-colors hover:border-(color:--s-line)/50 hover:bg-(--s-fg)/5`}>
                   <div className={`flex-shrink-0 w-11 h-11 rounded-lg ${iconBg} flex items-center justify-center border border-(color:--s-fg)/10`}>
                     {isDataEngineer ? (
                       <Database className={`w-5 h-5 ${iconColor}`} />
