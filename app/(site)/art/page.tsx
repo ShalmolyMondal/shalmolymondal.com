@@ -1,9 +1,11 @@
 import Image from 'next/image';
-import { getArt, getSiteContent } from '@/lib/data';
+import { ShoppingBag } from 'lucide-react';
+import { getArt, getPersonalInfo, getSiteContent } from '@/lib/data';
 
 export default function ArtPage() {
     const artPieces = getArt();
     const content = getSiteContent().artPage;
+    const etsy = getPersonalInfo().social.etsy;
 
     return (
         <div className="min-h-screen bg-(--s-bg) text-(--s-fg)">
@@ -16,6 +18,17 @@ export default function ArtPage() {
                         <p className="text-xl text-(--s-muted)">
                             {content.description}
                         </p>
+                        {etsy && (
+                            <a
+                                href={etsy}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#6366F1] to-[#4F46E5] text-white text-sm font-medium hover:from-[#818CF8] hover:to-[#6366F1] transition-colors shadow-lg shadow-[#6366F1]/20"
+                            >
+                                <ShoppingBag className="w-4 h-4" />
+                                Shop prints on Etsy
+                            </a>
+                        )}
                     </div>
 
                     {/* Art Grid */}

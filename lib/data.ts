@@ -11,6 +11,7 @@ export interface Social {
     twitter?: string;
     medium?: string;
     instagram?: string;
+    etsy?: string;
 }
 
 export interface Personal {

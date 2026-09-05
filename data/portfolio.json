@@ -11,7 +11,8 @@
       "googleScholar": "https://scholar.google.com.au/citations?user=qE84Td8AAAAJ&hl=en&authuser=1",
       "twitter": "https://twitter.com/shalmoly",
       "medium": "https://medium.com/@shalmoly",
-      "instagram": "https://www.instagram.com/ink_with_shalmoly/"
+      "instagram": "https://www.instagram.com/ink_with_shalmoly/",
+      "etsy": ""
     }
   },
   "about": {
@@ -510,7 +511,7 @@
         ]
       },
       "artSection": {
-        "title": "Creative Expression",
+        "title": "The Nest",
         "description": "Hand-drawn mandalas, dotwork and ink sketches. A living archive of creativity, growth, and meditative process.",
         "ctaLabel": "View All Art",
         "ctaHref": "/art"
@@ -588,7 +589,7 @@
       "doiLabel": "DOI"
     },
     "artPage": {
-      "title": "Art Gallery",
+      "title": "The Nest",
       "description": "A living archive of creativity, growth, and meditative process."
     },
     "blogPage": {

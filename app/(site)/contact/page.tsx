@@ -1,4 +1,5 @@
 import Card3DTilt from '@/components/Card3DTilt';
+import { ShoppingBag } from 'lucide-react';
 import SpotlightCard from '@/components/SpotlightCard';
 import MagneticButton from '@/components/MagneticButton';
 import FadeIn from '@/components/FadeIn';
@@ -113,6 +114,15 @@ export default function ContactPage() {
                                             Medium
                                         </span>
                                     </MagneticButton>
+
+                                    {personal.social.etsy && (
+                                        <MagneticButton href={personal.social.etsy} external strength={0.2}>
+                                            <span className="flex items-center justify-center gap-2 p-3 bg-(--s-bg) rounded-lg hover:bg-(--s-surface) border border-(color:--s-line)/10 hover:border-[#6366F1]/30 transition-all text-sm font-medium group">
+                                                <ShoppingBag className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                                                Etsy Shop
+                                            </span>
+                                        </MagneticButton>
+                                    )}
                                 </div>
 
                                 {/* CTA Button */}
