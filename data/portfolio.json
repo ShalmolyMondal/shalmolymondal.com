@@ -510,7 +510,7 @@
         ]
       },
       "artSection": {
-        "title": "The Nest",
+        "title": "Creative Expression",
         "description": "Hand-drawn mandalas, dotwork and ink sketches. A living archive of creativity, growth, and meditative process.",
         "ctaLabel": "View All Art",
         "ctaHref": "/art"
@@ -588,7 +588,7 @@
       "doiLabel": "DOI"
     },
     "artPage": {
-      "title": "The Nest",
+      "title": "Art Gallery",
       "description": "A living archive of creativity, growth, and meditative process."
     },
     "blogPage": {
