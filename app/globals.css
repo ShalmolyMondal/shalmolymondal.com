@@ -20,6 +20,8 @@
     --s-accent-4: #C7D2FE;
     --s-accent-5: #E0E7FF;
     --s-violet: #C4B5FD;
+    --s-spot: #FFFFFF;
+    --s-spot-opacity: 0.21;
     color-scheme: dark;
 }
 html.light {
@@ -37,6 +39,8 @@ html.light {
     --s-accent-4: #4338CA;
     --s-accent-5: #3730A3;
     --s-violet: #6D28D9;
+    --s-spot: #4F46E5;
+    --s-spot-opacity: 0.5;
     --gradient-from: #F4F5FB;
     --gradient-via: #E9ECF6;
     --gradient-to: #F4F5FB;

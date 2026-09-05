@@ -5,7 +5,7 @@ type SpotlightProps = {
 
 export default function Spotlight({
     className = '',
-    fill = 'white',
+    fill = "var(--s-spot)",
 }: SpotlightProps) {
     return (
         <svg
@@ -23,7 +23,7 @@ export default function Spotlight({
                     ry="273.501"
                     transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
                     fill={fill}
-                    fillOpacity="0.21"
+                    fillOpacity="var(--s-spot-opacity)"
                 />
             </g>
             <defs>

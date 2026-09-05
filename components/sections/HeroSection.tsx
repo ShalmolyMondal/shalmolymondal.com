@@ -22,7 +22,7 @@ export function HeroSection({ personal, content }: HeroSectionProps) {
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <Spotlight
           className="-top-40 left-0 md:left-60 md:-top-20"
-          fill="white"
+          fill="var(--s-spot)"
         />
       </div>
 
