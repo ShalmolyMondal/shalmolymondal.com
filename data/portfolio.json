@@ -43,7 +43,7 @@
         "period": "Mar 2020 - Present",
         "type": "Part-time",
         "location": "Hawthorn, Victoria, Australia",
-        "description": ""
+        "description": "Delivering lectures for undergraduate and postgraduate courses."
       },
       {
         "role": "IoT RND Data Analyst",
@@ -51,7 +51,7 @@
         "period": "Aug 2023 - Jun 2024",
         "type": "Part-time",
         "location": "Melbourne, Victoria, Australia",
-        "description": ""
+        "description": "Created interactive dashboards to visualize air quality trends and patterns."
       },
       {
         "role": "IoT Researcher",
@@ -59,7 +59,7 @@
         "period": "Jul 2019 - Jun 2023",
         "type": "Full-time",
         "location": "Hawthorn, Victoria, Australia",
-        "description": "Conceptualized and implemented a framework for efficient and scalable data generation tailored to IoT applications. Developed research prototypes and Proof-of-Concept models to validate hypotheses and derive data-driven insights. Analyzed large-scale IoT data to identify trends, uncover patterns and improve forecasting accuracy. Published research findings in peer-reviewed journals and presented at international conferences. Mentored research projects, ensuring successful execution and impactful outcomes."
+        "description": "- Developed research prototypes and Proof-of-Concept models to validate hypotheses and derive data-driven insights. \n- Analyzed large-scale IoT data to identify trends, uncover patterns and improve forecasting accuracy. \n- Published research findings in peer-reviewed journals and presented at international conferences. "
       },
       {
         "role": "Software Developer",
@@ -67,7 +67,7 @@
         "period": "Mar 2017 - Apr 2019",
         "type": "Full-time",
         "location": "Greater Hyderabad Area",
-        "description": "Led SQL development initiatives for Oracle APPS, focusing on ERP system optimization and enhancement. Spearheaded the creation of technical and functional documentation to streamline project requirements and ensure alignment with business objectives. Drove cross-functional collaboration with stakeholders, delivering high-quality solutions while ensuring adherence to timelines and project goals."
+        "description": "SQL development initiatives for Oracle APPS, focusing on ERP systems."
       },
       {
         "role": "Research Scholar",
@@ -75,7 +75,7 @@
         "period": "Jun 2015 - Apr 2016",
         "type": "Full-time",
         "location": "Dhanbad, Jharkhand, India",
-        "description": "Implemented a face recognition system, utilizing eigenface and distance classifier, and achieved an accuracy of 93.33%. Authored and published work in peer-reviewed journals and international conferences showcasing the research findings and contributions in the field."
+        "description": "- Implemented a face recognition system, utilizing eigenface and distance classifier.\n- Authored and published work in peer-reviewed journals and international conferences showcasing the research findings and contributions in the field."
       }
     ],
     "education": [
