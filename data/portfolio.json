@@ -35,7 +35,7 @@
         "period": "Jul 2024 - Present",
         "type": "Full-time",
         "location": "Melbourne, Victoria, Australia",
-        "description": "Building scalable data pipelines and analytics platforms using Python and Microsoft SQL Server."
+        "description": "Building data pipelines using Python and Microsoft SQL Server."
       },
       {
         "role": "Sessional Academic",
@@ -43,23 +43,15 @@
         "period": "Mar 2020 - Present",
         "type": "Part-time",
         "location": "Hawthorn, Victoria, Australia",
-        "description": "Delivering lectures and tutorials for undergraduate and postgraduate courses in IoT, data visualization, programming, big data, and computer systems. Supervising postgraduate research projects in IoT, data science, and big data, providing guidance and mentorship to students throughout the research process."
+        "description": ""
       },
       {
         "role": "IoT RND Data Analyst",
-        "company": "Blueiot Technology Co., Ltd",
+        "company": "BlueIot Technology Co., Ltd",
         "period": "Aug 2023 - Jun 2024",
         "type": "Part-time",
         "location": "Melbourne, Victoria, Australia",
-        "description": "Conducted in-depth analysis of IoT sensor data to optimize air quality monitoring systems. Designed and developed wire frame prototypes for monitoring building sensor systems. Created interactive dashboards to visualize air quality trends and patterns."
-      },
-      {
-        "role": "Research Assistant",
-        "company": "Swinburne University of Technology",
-        "period": "Oct 2022 - Jun 2023",
-        "type": "Contract",
-        "location": "Melbourne, Victoria, Australia",
-        "description": "Developed AI-driven solutions for real-time detection of bicycle lanes using computer vision techniques to improve road safety for cyclists, particularly in low-visibility nighttime conditions."
+        "description": ""
       },
       {
         "role": "IoT Researcher",
