@@ -229,8 +229,8 @@
     },
     {
       "id": "2",
-      "title": "Ember Mandala",
-      "description": "Digital mandala in ember reds and gold on black.",
+      "title": "",
+      "description": "Digital mandala in red and gold on black.",
       "image": "/art/ember-mandala.jpg",
       "category": "Digital Mandala",
       "date": ""
@@ -238,7 +238,7 @@
     {
       "id": "3",
       "title": "Blue Lotus",
-      "description": "Layered blue lotus mandala, digital.",
+      "description": "",
       "image": "/art/blue-lotus-mandala.jpg",
       "category": "Digital Mandala",
       "date": ""
@@ -325,23 +325,23 @@
     },
     {
       "id": "14",
-      "title": "Mountain Sunrise",
-      "description": "Stippled mountain and sunrise, fineliner in sketchbook.",
+      "title": "Here comes the sun, breaking through the silent granite",
+      "description": "",
       "image": "/art/mountain-sunrise.jpg",
       "category": "Ink Sketch",
       "date": ""
     },
     {
       "id": "15",
-      "title": "Shipyard",
-      "description": "Pen and ink sketch of a shipyard crane.",
+      "title": "Steel bones reaching where the gulls refuse to fly",
+      "description": "",
       "image": "/art/shipyard.jpg",
       "category": "Ink Sketch",
       "date": ""
     },
     {
       "id": "16",
-      "title": "Riverbank Boats",
+      "title": "Tied to the dusk, dreaming of the open sea",
       "description": "Pen and ink sketch of moored boats at dusk.",
       "image": "/art/riverbank-boats.jpg",
       "category": "Ink Sketch",
