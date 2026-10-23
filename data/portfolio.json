@@ -221,7 +221,7 @@
   "art": [
     {
       "id": "1",
-      "title": "Layered petal mandala",
+      "title": "Stillness",
       "description": "There is a center to the circle that remains untouched by the storm",
       "image": "/art/petal-mandala.jpg",
       "category": "Mandala",
@@ -317,32 +317,32 @@
     },
     {
       "id": "13",
-      "title": "She wears the storm like silk, unyielding and untamed",
-      "description": "Goddess Durga in mandala-inspired linework.",
+      "title": "Maa Durga",
+      "description": "She wears the storm like silk, unyielding and untamed",
       "image": "/art/durga.jpg",
       "category": "Pen and Ink",
       "date": ""
     },
     {
       "id": "14",
-      "title": "Here comes the sun, breaking through the silent granite",
-      "description": "",
+      "title": "Solitude",
+      "description": "Here comes the sun, breaking through the silent granite ",
       "image": "/art/mountain-sunrise.jpg",
       "category": "Pen and Ink",
       "date": ""
     },
     {
       "id": "15",
-      "title": "Steel bones reaching where the gulls refuse to fly",
-      "description": "",
+      "title": "Vessel",
+      "description": "Steel bones reaching where the gulls refuse to fly",
       "image": "/art/shipyard.jpg",
       "category": "Pen and Ink",
       "date": ""
     },
     {
       "id": "16",
-      "title": "Tied to the dusk, dreaming of the open sea",
-      "description": "Pen and ink sketch of moored boats at dusk.",
+      "title": "Drift ",
+      "description": "Tied to the dusk, dreaming of the open sea",
       "image": "/art/riverbank-boats.jpg",
       "category": "Pen and Ink",
       "date": ""
@@ -350,7 +350,7 @@
     {
       "id": "17",
       "title": "Lakeside Pines",
-      "description": "Stippled lakeside landscape with pine trees.",
+      "description": "Deep in the pines where the clouds stoop down to touch the lake",
       "image": "/art/lakeside-pines.jpg",
       "category": "Pen and Ink",
       "date": ""
