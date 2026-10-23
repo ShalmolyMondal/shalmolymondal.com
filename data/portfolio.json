@@ -245,8 +245,8 @@
     },
     {
       "id": "4",
-      "title": "Night Bloom",
-      "description": "White ink mandala on black paper.",
+      "title": "Midnight Bloom",
+      "description": "Starlight blooming in ink on silent obsidian",
       "image": "/art/white-on-black-mandala.jpg",
       "category": "Mandala",
       "date": ""
@@ -254,7 +254,7 @@
     {
       "id": "5",
       "title": "Flower Mandala",
-      "description": "Fineliner flower mandala with dotwork accents.",
+      "description": "Every point a whisper, every petal a heartbeat",
       "image": "/art/flower-mandala.jpg",
       "category": "Mandala",
       "date": ""
@@ -262,31 +262,31 @@
     {
       "id": "6",
       "title": "Full Circle",
-      "description": "Dense fineliner mandala, black ink on white.",
+      "description": "The wheel in the sky keeps on turnin'—round and round we go.",
       "image": "/art/circle-mandala.jpg",
       "category": "Mandala",
       "date": ""
     },
     {
       "id": "7",
-      "title": "Rose Gold Dots",
-      "description": "Dot mandala in rose gold and white on black.",
+      "title": "Aura",
+      "description": "Every dot a quiet spark, blooming softly from the dar",
       "image": "/art/rose-gold-dot-mandala.jpg",
       "category": "Dot Mandala",
       "date": ""
     },
     {
       "id": "8",
-      "title": "Ocean Dots",
-      "description": "The serene pulse of an ocean bloom",
+      "title": "Abyss",
+      "description": "A drop of indigo in the dark, rippling toward the infinite",
       "image": "/art/blue-dot-mandala.jpg",
       "category": "Dot Mandala",
       "date": ""
     },
     {
       "id": "9",
-      "title": "Flower of Life",
-      "description": "Flower of life pattern in green dotwork.",
+      "title": "Genesis",
+      "description": "To see a world in a wild flower, and eternity in a circle of green",
       "image": "/art/flower-of-life.jpg",
       "category": "Dot Mandala",
       "date": ""
@@ -294,23 +294,23 @@
     {
       "id": "10",
       "title": "Coaster Trio",
-      "description": "Three hand-drawn mandala coasters.",
+      "description": "carved out for quiet coffee and drifting thoughts",
       "image": "/art/coaster-mandalas.jpg",
-      "category": "Mandala",
+      "category": "Handmade",
       "date": ""
     },
     {
       "id": "11",
       "title": "Half Mandala",
-      "description": "Half mandala on dotted grid, fineliner.",
+      "description": "Half the circle revealed, the rest left to the quiet mind",
       "image": "/art/half-mandala-dots.jpg",
       "category": "Mandala",
       "date": ""
     },
     {
       "id": "12",
-      "title": "Framed Half Mandala",
-      "description": "Half mandala with hanging pendants and floral border.",
+      "title": "Amulet",
+      "description": "\"Framed in ornate curves where dreams hang like quiet jewels",
       "image": "/art/framed-half-mandala.jpg",
       "category": "Mandala",
       "date": ""
