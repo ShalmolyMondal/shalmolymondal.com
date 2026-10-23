@@ -221,16 +221,16 @@
   "art": [
     {
       "id": "1",
-      "title": "",
-      "description": "Layered petal mandala, fineliner on paper.",
+      "title": "Layered petal mandala",
+      "description": "There is a center to the circle that remains untouched by the storm",
       "image": "/art/petal-mandala.jpg",
       "category": "Mandala",
       "date": ""
     },
     {
       "id": "2",
-      "title": "",
-      "description": "Digital mandala in red and gold on black.",
+      "title": "Ignite",
+      "description": "Just a spark will set the night ablaze",
       "image": "/art/ember-mandala.jpg",
       "category": "Digital Mandala",
       "date": ""
@@ -278,7 +278,7 @@
     {
       "id": "8",
       "title": "Ocean Dots",
-      "description": "Dot mandala in blues and white on black.",
+      "description": "The serene pulse of an ocean bloom",
       "image": "/art/blue-dot-mandala.jpg",
       "category": "Dot Mandala",
       "date": ""
