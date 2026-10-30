@@ -118,18 +118,18 @@
         "url": "https://digital-library.theiet.org/doi/10.1049/pbpc027e_ch4",
         "type": "Book Chapter",
         "doi": "https://doi.org/10.1049/pbpc027e_ch4",
-        "pdfUrl": "https://digital-library.theiet.org/doi/pdf/10.1049/pbpc027e_ch4"
+        "pdfUrl": "/docs/IntroBenchmarkingIoTMiddleware_IET_2024.pdf"
       },
       {
         "id": "2",
-        "title": "Situation-Aware IoT Data Generation towards Performance Evaluation of IoT Middleware Platforms",
-        "venue": "IEEE Xplore",
+        "title": "Situation-based Query Generation for Performance Evaluation of Cloud Managed IoT Applications",
+        "venue": "IEEE MDM",
         "year": "2023",
-        "authors": "Mondal, S., Jayaraman, P. P., Delir Haghighi, P., Hassani, A., & Georgakopoulos, D.",
+        "authors": "Mondal, S., Jayaraman, P. P., Hassani, A., Delir Haghighi, P., & Georgakopoulos, D.",
         "url": "https://ieeexplore.ieee.org/abstract/document/10214941",
-        "type": "Journal",
-        "doi": "https://ieeexplore.ieee.org/abstract/document/10214941",
-        "pdfUrl": "https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10214941"
+        "type": "Conference",
+        "doi": "https://doi.org/10.1109/MDM58254.2023.00064",
+        "pdfUrl": "/docs/SituationBasedQueryGeneration_IEEE_MDM_2023.pdf"
       },
       {
         "id": "3",
@@ -140,7 +140,7 @@
         "url": "https://www.mdpi.com/1424-8220/23/1/7",
         "type": "Journal",
         "doi": "https://doi.org/10.3390/s23010007",
-        "pdfUrl": "https://www.mdpi.com/1424-8220/23/1/7/pdf"
+        "pdfUrl": "/docs/SituationAwareIoTDataGeneration_Sensors_2023.pdf"
       },
       {
         "id": "4",
@@ -151,7 +151,7 @@
         "url": "https://dl.acm.org/doi/abs/10.1145/3487664.3487742",
         "type": "Conference",
         "doi": "https://doi.org/10.1145/3487664.3487742",
-        "pdfUrl": "https://dl.acm.org/doi/pdf/10.1145/3487664.3487742"
+        "pdfUrl": "/docs/ModellingIoTAppRequirements_iiWAS_2021.pdf"
       },
       {
         "id": "5",
@@ -162,7 +162,7 @@
         "url": "https://link.springer.com/chapter/10.1007/978-981-10-3153-3_39",
         "type": "Book Chapter",
         "doi": "https://doi.org/10.1007/978-981-10-3153-3_39",
-        "pdfUrl": "https://link.springer.com/content/pdf/10.1007/978-981-10-3153-3_39.pdf"
+        "pdfUrl": "/docs/FaceRecognition_PCA_DC_2017.pdf"
       }
     ]
   },

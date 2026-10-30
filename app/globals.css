@@ -176,6 +176,8 @@ html { background: var(--s-bg); color: var(--s-fg); }
         text-rendering: optimizeLegibility;
         font-size: 15px;
         line-height: 1.6;
+        /* Keep line breaks typed into CMS text fields. */
+        white-space: pre-line;
     }
 
     h1,
